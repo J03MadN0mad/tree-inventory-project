@@ -1,0 +1,39 @@
+# Tree Inventory GIS Modernization
+
+A from-scratch effort to bring a municipal/organizational tree inventory to a spatially accurate, standardized, and stakeholder-ready state — GPS workflow, field protocol, GIS system, and web map, documented as it's built rather than after the fact.
+
+🚧 **This project is in progress.** See [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) for an honest, current breakdown of what's done, what's underway, and what's still ahead. Nothing in this repo claims to be finished unless the status tracker says so.
+
+## Goal
+
+- Tree dataset is spatially accurate and defensible
+- GPS workflow is tested and scalable
+- Field operations are structured and repeatable
+- GIS system is standardized and documented
+- Web map is stable and stakeholder-ready
+
+## Repository layout
+
+```
+├── PROJECT_STATUS.md      ← current, honest state of each objective (start here)
+├── docs/
+│   └── overview.md        ← project background and objective breakdown
+├── protocols/
+│   └── point_validation_SOP.md   ← GPS testing & point validation methodology
+├── scripts/
+│   └── point_validation_toolkit.py   ← ArcGIS Pro validation tool
+├── LICENSE                ← code license (MIT)
+└── LICENSE-DATA.md        ← data licensing notes
+```
+
+## Where to start
+
+If you only read one file, read `PROJECT_STATUS.md` — it's the single source of truth for what's actually complete versus planned.
+
+## License
+
+Code in this repository is licensed under MIT (see `LICENSE`). Data licensing considerations are noted separately in `LICENSE-DATA.md`, since data and code often need different terms.
+
+## Citation
+
+See `CITATION.cff` if you're referencing this workflow or dataset elsewhere.
