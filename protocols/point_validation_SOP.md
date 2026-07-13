@@ -1,87 +1,65 @@
 # GPS Accuracy Testing & Point Validation Methodology
-**Tree Inventory GIS Project — Week 1 Priority**
-**Objective ties:** GPS Accuracy Testing & Integration · Spatial Accuracy Finalization
+**Tree Inventory GIS Project — Objective 1 & 2 support**
 
 ## 1. Purpose
 
-Every point currently in the GIS must end this week in one of two states:
-
-1. **Verified** — spatially accurate and defensible, kept as-is, or
-2. **Flagged** — labeled with a specific reason and a remediation path (field remeasurement or remote/desktop verification).
-
-No point should remain in an ambiguous or unreviewed state. This methodology defines the checks, thresholds, and status labels used to sort the entire existing inventory, so the dataset going into fall field season is clean and its accuracy is documented rather than assumed.
+Every point currently in the GIS ends up in one of two states: **classified with a `Status` value already in the schema**, or genuinely unresolvable at a desk and passed to the field-verification queue. This document defines exactly how that classification happens, using the project's own existing `Status` field domain rather than inventing a parallel one.
 
 ## 2. Why this matters beyond internal QA
 
-A tree inventory that reports up into a climate action plan, canopy goal, or grant narrative is only as credible as its underlying spatial and attribute accuracy. Structured, well-documented datasets are what let this kind of data actually be used for comparison and reporting across time or across jurisdictions — poorly documented, inconsistent data is a recurring bottleneck in urban forestry and climate reporting more broadly. This validation pass is what makes your dataset defensible when someone asks "how do you know these points are accurate?"
+A tree inventory feeding into climate action, canopy, or grant reporting is only as credible as its underlying spatial and attribute accuracy. This validation pass is what makes the dataset defensible when someone asks "how do you know these points are accurate?" — and it directly produces the "Data Integration & Quality" outcome in the project proposal.
 
-## 3. Status field (add to feature class)
+## 3. The `Status` field (already defined in `SCHEMA.txt`, not yet populated in the live sheet)
 
-| Field | Type | Purpose |
+| Value | Meaning | Set by this process when... |
 |---|---|---|
-| `Validation_Status` | Text (40) | One of the four statuses below |
-| `Validation_Notes` | Text (255) | Which check(s) triggered the flag |
-| `Validation_Date` | Date | When the point was last run through this workflow |
-| `Remediation_Method` | Text (20) | Field / Remote / N/A — filled in once a flagged point is resolved |
-
-**Status domain:**
-- `Verified` — passed all automated checks, retained as-is
-- `Needs Remote Verification` — resolvable from Google Earth / aerial imagery without a site visit
-- `Needs Field Remeasurement` — cannot be resolved remotely, must be re-logged in situ
-- `Flagged for Removal` — duplicate, erroneous, or otherwise not a real, distinct tree record
+| `Existing` | Verified in field, matches ID and tag | Field crew confirms — not something a desk check can assert |
+| `Needs_Verification` | Default for legacy data not yet field-checked | Default state; also assigned when required attributes are missing |
+| `Missing_Tag` | Tag missing/damaged/illegible | **Field-confirmed only** — see Section 6 |
+| `New_2025` | Newly added tree | Set at time of new-tree entry, not by this validation pass |
+| `Uncertain_Location` | GPS error >3–5 m, unclear placement, or implausible position | Assigned by the checks below |
+| `Removed` | Tree no longer present | Field-confirmed only |
+| `Duplicate_Candidate` *(recommended addition — see data dictionary)* | Likely duplicate coordinate record | Assigned by the duplicate check below; never auto-deleted |
 
 ## 4. Validation checks, in priority order
 
-Run in this order — the first check a point fails determines its status (don't let a later check override an earlier, more serious flag).
+Run against the **UTM Zone 11N projected** feature class (not raw WGS 84 lat/long — see coordinate system note in the data dictionary).
 
 ### Check 1 — Geometry validity
-- Null or empty geometry
-- Coordinates at (0,0) or clearly outside your project/service area extent
-- **On fail →** `Needs Field Remeasurement` ("No geometry captured")
+Null/empty geometry, or coordinates outside the campus extent. → `Needs_Verification`, note "no geometry captured."
 
 ### Check 2 — Duplicate / near-duplicate location
-- Two or more points within a set tolerance of each other (start with **1 meter** — tighten or loosen once your GPS accuracy testing objective gives you a real device error range)
-- Distinguish **true duplicates** (same tree logged twice, e.g., by two crew members or a re-log without deleting the original) from **legitimately close trees** (e.g., a planted row) — use judgment on borderline cases rather than auto-deleting
-- **On fail →** `Flagged for Removal` ("Duplicate location within X m")
+Two or more points within a set tolerance (start at 1 m, revise once GPS Accuracy Testing produces real device-comparison numbers). → `Duplicate_Candidate`, flagged for human review — never auto-removed, since a true duplicate (same tree logged twice) looks identical at this stage to two legitimately close trees.
 
 ### Check 3 — Positional plausibility
-- Point falls outside the expected project/parcel boundary
-- (Optional, if you have building footprint / street centerline / hydrology layers) point falls inside a building, in the middle of a street, or in water
-- **On fail →** `Needs Remote Verification` ("Falls outside expected area" / "Implausible location")
+Point falls outside the expected campus boundary, or (if building footprint layers are available) inside a building or roadway. → `Uncertain_Location`, note the specific reason.
 
 ### Check 4 — Recorded GPS accuracy
-- If your collection protocol logs an estimated horizontal error per point, flag anything above your threshold
-- Start with a conservative threshold (e.g., **3 m**) and revise once your GPS Accuracy Testing objective produces real numbers for your device(s) — the two objectives should feed each other directly
-- **On fail →** `Needs Remote Verification` ("Recorded error exceeds threshold")
+Using the schema's own tiering: `GPS_Accuracy_m` ≤3 m passes untouched; 3–5 m → `Uncertain_Location` ("conditional accuracy, recommend recheck"); >5 m → `Uncertain_Location` ("exceeds even the field collection floor, needs remeasurement").
 
 ### Check 5 — Required attribute completeness
-- Minimum viable record, consistent with standard urban forestry inventory practice (i-Tree Eco's own minimum import requirement is just species + DBH): unique Tree ID, Species, DBH
-- **On fail →** `Needs Field Remeasurement` ("Missing required attribute")
+Missing `Species`, `DBH_in`, or `Condition`. → `Needs_Verification`, note which field is missing.
 
-### Check 6 — Temporal duplicate
-- Same Tree ID appears in multiple records with different capture dates (re-logged without archiving the original)
-- Keep the most recent, move the older record to an archive table rather than deleting outright (defensibility — you may need to show your edit history later)
+### Check 6 — Tag_ID blank
+This is **not** the same as `Missing_Tag` (see Section 6). A blank `Tag_ID` just gets noted — it does not change `Status` on its own, since a desk check can't tell "field never checked" apart from "tag confirmed absent."
 
 ## 5. Remote verification protocol (Google Earth)
 
-A flagged point can be resolved remotely — no field visit needed — only if **all** of the following are true:
-- The tree is visible and identifiable in current aerial/street-level imagery
-- Its canopy position clearly corresponds to a single, distinct tree at that location
-- There's no ambiguity about which tree the record refers to (not one of several closely spaced trees)
+A point flagged `Uncertain_Location` can be resolved without a field visit only if: the tree is visible and identifiable in current imagery, its canopy clearly corresponds to one distinct tree, and there's no ambiguity about which tree the record refers to. If any of those fail, it goes to the field queue instead of being guessed at. Log the imagery date used, in `Notes`, for defensibility.
 
-If any of these fail, downgrade the point to `Needs Field Remeasurement` rather than guessing. Log which imagery date you used in `Validation_Notes` for defensibility.
+## 6. What automated desk-based QA cannot determine — and doesn't pretend to
 
-## 6. Weekly workflow
+`Missing_Tag` and `Removed` are field-truth states — they mean a crew physically checked and found a specific condition. A desk-based script has no way to confirm either, so it never sets these values. A blank `Tag_ID` in the data is left as `Needs_Verification` (or whatever it already was) with a note, not silently upgraded to a claim the automation can't back up.
 
-1. Run the validation script (see `point_validation_toolkit.py`) against a **copy** of your feature class first
-2. Review the summary counts by status
-3. Export the flagged subset to a working table — this becomes your remote-verification queue and your field re-log punch list
-4. Work the remote-verification queue first (fastest wins)
-5. Whatever remains becomes the field crew's re-log list going into the Field Data Collection Optimization objective
-6. Track weekly: **% of inventory with an assigned Validation_Status** — target 100% by end of this week, not 100% "Verified" (that's a later-summer goal as remeasurement happens)
+## 7. Weekly workflow
 
-## 7. Standards this approach draws on
+1. Run `scripts/point_validation_toolkit.py` against a **copy** of the UTM 11N feature class first
+2. Review summary counts by `Status`
+3. Export everything not `Existing`/passing to a working table — this is both the remote-verification queue and the field re-log punch list
+4. Work remote verification first, then hand the remainder to the field crew
+5. Track weekly: % of inventory with a `Status` value assigned — not % `Existing`, since that's a later-summer target as remeasurement happens
 
-- **Metadata structure** — the check categories above (positional accuracy, attribute accuracy, lineage/date) mirror the core building blocks of the ISO 19115 / FGDC CSDGM geospatial metadata standards, which is worth knowing since your GIS Protocol Standardization objective will need to produce metadata records eventually anyway
-- **Minimum attribute floor** — species + DBH as the non-negotiable minimum record mirrors i-Tree Eco's own inventory import requirements, a widely used urban forestry standard
-- **Positional accuracy reporting** — once your GPS Accuracy Testing objective produces real error figures, consider reporting them in the National Standard for Spatial Data Accuracy (NSSDA) style (accuracy at a stated confidence level, e.g., 95%) rather than a bare "meters" number — it's the more defensible convention for describing dataset-wide accuracy
+## 8. Standards this approach draws on
+
+- **Metadata structure** (positional accuracy, attribute accuracy, lineage/date) mirrors the core building blocks of ISO 19115 / FGDC CSDGM
+- **Accuracy reporting** — once GPS Accuracy Testing has real device-comparison numbers, consider stating dataset-wide accuracy in the NSSDA style (accuracy at a stated confidence level) alongside the project's ±2 m target, rather than a bare meters figure
