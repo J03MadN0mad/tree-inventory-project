@@ -1,8 +1,9 @@
 # Project Status
 
-Last updated: 2026-07-11
+Last updated: 2026-07-13
 
-This file exists so this repository never overstates where the project actually is. Update it honestly as work happens — a "Not started" row is not a failure, it's information.
+###NOTE TO FELLOW
+This living document file exists so this repository never overstates where the project actually is. Update it honestly as work happens. A "Not started" row is not a failure, it's information, transpancy, and accountability that is appreciated by stakeholders.
 
 | # | Objective | Status | Notes |
 |---|---|---|---|
@@ -17,20 +18,45 @@ This file exists so this repository never overstates where the project actually 
 
 **Legend:** ⚪ Not started · 🟡 In progress · 🟢 Complete
 
-## What's real right now
+## Current Blockers
+- **ESRI/ArcGIS Pro access pending.** Waiting on the campus GIS department to resolve licensing 
+before `point_validation_toolkit.py` can be run against the official MASTERSHEET in *ArcGIS Pro*. Script logic has been tested against a 2-row csv sample outside ArcGIS Pro (see commit history) to confirm the checks behave correctly; the full run against real production data is queued for as soon as license access is restored.
 
-- A triage methodology and ArcPy script that populate the project's own existing `Status` field, matched against the actual live schema (not a guessed-at one)
+## Data quality issues found during sample testing (ongoing)
+- Tree_ID 2: Species "Quercia macrocarpa" — likely typo for Quercus macrocarpa (bur oak)
+- Trailing whitespace present on some Species/Condition values. Worth a trim pass before final QA
+
+## Access tiers (as currently planned)
+
+- **Public web map** — graphical point display, read-only
+- **Datasheet + raw GIS resources** (.shp, geodatabase, .tiff) — fully public, extractable, once the inventory is validated. Deliberately open to any educational institution wanting to replicate this workflow, not gated to internal academics only.
+- **Facilities** — needs elevated access to the web map for active management (likely edit-level, not just viewing). Specifics pending the department's ESRI licensing decision — revisit once that's settled.
+
+## What's tangible at this time
+
+- A triage methodology and ArcPy script that populate the project's own existing `Status` field, matched against the actual live schema
 - A reconciled data dictionary that resolved four concrete, real discrepancies across the project's own three schema documents (see `docs/data-dictionary.md`)
 - The full in-field data collection protocol and GPS best practices cheat sheet, formalized from existing working documents, including the new Garmin GPSMAP 65s hardware workflow
 - A documentation practice split across a private working vault (Obsidian) and this public repo, with a defined rule for when something graduates from draft to public record
 
 ## What's not real yet (and won't be claimed as such)
 
-- No live validation run has been executed against the actual inventory dataset — the script is written and matched to the real schema, but untested against real rows
-- Objectives 2, 5, 6, 7 have no documented output in this repo yet
+- No live validation run has been executed against the actual inventory dataset. The script is written and matched to the real schema, but untested against real rows
+- Objectives 2, 5, 6, 7 have no documented output in this repo yet (To Be Initiated Late July 2026)
 - The recommended schema addition (`Duplicate_Candidate`) is a recommendation in this repo, not yet an approved change to the live schema
-- The field collection protocol has been tested once, informally, prior to this repo's existence — not yet re-validated against the version written up here
+- The field collection protocol has been tested on multiple ocasions, informally & formally, prior to this repo's existence; not yet re-validated against the version written up here
 
 ## What I'd do differently
+*(Draft — rewrite in your own words; revisit once the first live validation run gives real results to reflect on.)*
 
-*(Fill this in honestly once there's enough completed to reflect on — a fellowship-style project is more credible with one real lesson learned than with a longer feature list.)*
+**Lessons from this phase:**
+
+- The three-way schema drift (SCHEMA.txt, Field_Guide_Reference.txt, and the live sheet quietly disagreeing with each other) happened because nothing was validating new reference documents against the ones already in use. Next time, any new protocol or reference doc gets checked against the existing ones *before* it's adopted, not reconciled after the fact.
+- With a limited, defined number of authorized work hours as a fellow, the highest-leverage split wasn't "AI vs. me" — it was mechanical work vs. judgment calls. Delegating fast, well-defined tasks (reconciling documents, drafting scripts, formatting) freed my actual hours for the things that needed a person: deciding which schema value wins when two documents disagree, judging whether a protocol is field-ready, deciding what's true enough to publish.
+- The real fix for schema drift isn't another reference document — it's an automated validation step between Arboreal exports and the MASTERDATASHEET that checks incoming data against one canonical schema before it's merged in, so a fourth conflicting version can't quietly form the way the first three did.
+
+**Priorities before the next community data collection day:**
+
+- Technology limitations need to be addressed *before* a collection day, not discovered during one — specifically, confirming GPS accuracy expectations (phone vs. Garmin, when to use which) are understood by every volunteer beforehand, not troubleshot tree-by-tree in the field.
+- Data quality depends as much on consistent execution across volunteer sessions as it does on the schema itself. Building a small network of trained, reliable student leaders — trained specifically on `field_data_collection_protocol.md` — matters as much as any tooling decision here.
+- A deliberate partnership with the campus's newly developing GIS department is worth pursuing now rather than letting it happen informally — internally, it's a path to longer-term technical support and hosting; more broadly, a working, documented tree inventory is a genuine contribution to a department still establishing itself.

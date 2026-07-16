@@ -1,25 +1,31 @@
 """
 Tree Inventory Point Validation Toolkit
 =========================================
-Run inside ArcGIS Pro's Python window, or as a standalone script tool,
-against the tree inventory point feature class — projected to
-UTM Zone 11N (WGS 84), per the project's coordinate system standard.
-Distance-based checks below assume projected meters; running this
-against the raw WGS 84 lat/long storage layer will silently misbehave.
+Author's reintroduction to Python, so this can be anticipated as a work in
+progress up until the start of the Fall or throughout the course of their 
+fellowship. It is meant to be a clean, contained example to learn the 
+pattern on: finding a function, find where it's called, find where 
+the result is used.
+This *.py script* is meant to be Run inside ArcGIS Pro's Python window, 
+or as a standalone script tool, against the tree inventory point feature class; 
+projected to UTM Zone 11N (WGS 84), per the project's coordinate system standard.
+Distance-based checks below assume *projected meters* ; running this
+against the raw WGS 84 lat/long storage layer will cause it to silently misbehave.
 
-WHAT IT DOES
+EXPECTED OUTCOMES UPON EXECUTING
 ------------
 Populates the existing `Status` field (already defined in SCHEMA.txt,
-not yet populated in the live sheet) rather than inventing a parallel
-status field. Values used:
+not yet populated in the live sheet; See 'data-dictionary.md') rather 
+than inventing a parallel status field. 
+Values used:
     - Needs_Verification    (default / legacy / missing attributes)
     - Uncertain_Location    (poor GPS accuracy / implausible position)
-    - Duplicate_Candidate   (recommended new value — see data dictionary;
+    - Duplicate_Candidate   (*recommended new value* ; see data dictionary;
                              flagged for human review, never auto-deleted)
 Left untouched (field-truth states this script cannot determine):
     - Existing, Missing_Tag, Removed, New_2025
 
-BEFORE YOU RUN THIS
+BEFORE EXECUTING SCRIPT
 --------------------
 1. TEST ON A COPY of the feature class first, not production data.
 2. Confirm the feature class is the UTM 11N projected version.
@@ -32,8 +38,8 @@ NATIVE ARCGIS PRO ALTERNATIVE
 ------------------------------
 "Check Geometry"/"Repair Geometry" (invalid geometry), "Find Identical"
 (duplicates), and "Select Layer By Location" (boundary checks) can do
-pieces of this natively if you'd rather not run custom code. This
-script chains the equivalent logic together with the schema's own
+pieces of this natively if running custom code is not desirable. This
+script chains the equivalent code logic together with the schema's own
 Status values, plus the attribute-completeness and accuracy-tier
 checks, which don't have single built-in tools.
 """
@@ -95,6 +101,20 @@ def find_duplicate_oids(fc):
             dup_oids.update(oid_list)
     return dup_oids
 
+## Added (PLACEHOLDER TO ADD NOTES HERE)
+def find_duplicate_tag_ids(fc, tag_field):
+    """Return OIDs whose Tag_ID matches another record's Tag_ID."""
+    tag_to_oids = {}
+    with arcpy.da.SearchCursor(fc, ["OID@", tag_field]) as cursor:
+        for oid, tag in cursor:
+            if tag:
+                tag_to_oids.setdefault(tag, []).append(oid)
+    dup_oids = set()
+    for oid_list in tag_to_oids.values():
+        if len(oid_list) > 1:
+            dup_oids.update(oid_list)
+    return dup_oids
+
 
 def load_boundary_polygons(boundary_fc):
     if not boundary_fc:
@@ -113,6 +133,7 @@ def point_in_boundary(x, y, sr, boundary_polys):
 def run_validation():
     ensure_fields(FC_PATH)
     dup_oids = find_duplicate_oids(FC_PATH)
+    dup_tag_oids = find_duplicate_tag_ids(FC_PATH, FIELD_TAG_ID) ##(PLACE HOLDER TO HERE )
     sr = arcpy.Describe(FC_PATH).spatialReference
     boundary_polys = load_boundary_polygons(BOUNDARY_FC)
 
@@ -133,9 +154,14 @@ def run_validation():
             if x is None or y is None:
                 new_status = STATUS_NEEDS_VERIFICATION
                 new_notes.append("Automated QA: no geometry captured")
-            elif oid in dup_oids:
+            elif oid in dup_oids or oid in dup_tag_oids:
                 new_status = STATUS_DUPLICATE_CANDIDATE
-                new_notes.append(f"Automated QA: duplicate location within {DUPLICATE_TOLERANCE_M} m — human review required before removal")
+                reasons = []
+                if oid in dup_oids:
+                    reasons.append(f"duplicate location within {DUPLICATE_TOLERANCE_M} m")
+                if oid in dup_tag_oids:
+                    reasons.append("duplicate Tag_ID shared with another record")
+                new_notes.append("Automated QA: " + " and ".join(reasons) + " — human review required before removal")
             elif not point_in_boundary(x, y, sr, boundary_polys):
                 new_status = STATUS_UNCERTAIN_LOCATION
                 new_notes.append("Automated QA: falls outside expected campus boundary")

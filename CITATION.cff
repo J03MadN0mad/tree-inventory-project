@@ -3,6 +3,6 @@ message: "If you use this workflow or dataset, please cite it as below."
 title: "Tree Inventory GIS Modernization"
 type: dataset
 authors:
-  - name: "[Your Name or Organization]"
+  - name: "Joe Paredes"
 date-released: 2026-07-11
 version: "0.1.0"
