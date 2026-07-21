@@ -1,17 +1,17 @@
 # Data Dictionary — Reconciled Schema
 
-**Status:** Living document. This reconciles three internal sources that currently disagree with each other in places: `SCHEMA.txt` (the designated authoritative schema), `Field_Guide_Reference.txt` (an older field reference), and the actual live MASTERDATASHEET column headers currently in use. This document states which one takes authority; the GIS Protocol Standardization deliverable.
+**Status:** Living document — now a reconciliation *record* rather than an open reconciliation. As of 2026-07-20, `SCHEMA.txt` (v2) is the single authoritative schema and `Field_Guide_Reference.txt` has been formally retired (see its deprecation notice for details). This document preserves the reasoning behind each resolved conflict between `SCHEMA.txt`, the now-retired `Field_Guide_Reference.txt`, and the live MASTERDATASHEET column headers — the GIS Protocol Standardization deliverable.
 
 ## Fields currently active in the live dataset
 
-| Field | Type / Units | In `SCHEMA.txt`? | In `Field_Guide_Reference.txt`? | Notes |
+| Field | Type / Units | In `SCHEMA.txt`? | In `Field_Guide_Reference.txt`? *(retired 2026-07-20)* | Notes |
 |---|---|---|---|---|
 | `Tree_ID` | Text, unique, permanent | ✅ | ✅ | Primary key. Never reassigned. |
 | `Tag_ID` | Text | ✅ | ✅ | Physical tag number. `"None"` if missing. |
 | `Species` | Text, scientific name | ✅ | ✅ | e.g. *Acer saccharum* |
 | `Common_Name` | Text | ✅ | ✅ | Optional, public-facing |
-| `DBH_in` | Float | ✅ | ⚠️ conflict | **See "Resolved conflict #1" below** |
-| `Condition` | Text, domain-controlled | ✅ (as `Condition`) | ⚠️ named `Health` | Good / Fair / Poor / Dead / Remove |
+| `DBH_in` | Float | ✅ | ⚠️ conflict *(resolved)* | **Resolved 2026-07-20 — see "Resolved conflict #1" below** |
+| `Condition` | Text, domain-controlled | ✅ (as `Condition`) | ⚠️ named `Health` *(resolved)* | Good / Fair / Poor / Dead / Remove — naming difference only, resolved 2026-07-20 |
 | `Latitude` / `Longitude` | Float, decimal degrees, WGS 84 | ✅ | ✅ | |
 | `Altitude_m` | Float, meters | ✅ | — | |
 | `GPS_Accuracy_m` | Float, meters | ✅ | — | **See "Resolved conflict #2" below** |
