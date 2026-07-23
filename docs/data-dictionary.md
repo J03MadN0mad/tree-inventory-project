@@ -15,9 +15,7 @@
 | `Latitude` / `Longitude` | Float, decimal degrees, WGS 84 | ✅ | ✅ | |
 | `Altitude_m` | Float, meters | ✅ | — | |
 | `GPS_Accuracy_m` | Float, meters | ✅ | — | **See "Resolved conflict #2" below** |
-| `Perpendicular_Height_m`, `Inclination_deg`, `Inclined_Height_m` | Float | ✅ | ⚠️ Field_Guide only has flat `Height_m` | SCHEMA.txt's lean-adjusted model is more precise and is what's actually live — treat `Field_Guide_Reference.txt`'s simpler version as outdated |
-### NOTE
-SCHEMA was created after the first 1/2 in-situ community data collection days (Dec. 2025 & April 2026)
+| `Perpendicular_Height_m`, `Inclination_deg`, `Inclined_Height_m` | Float | ✅ | ⚠️ Field_Guide only had flat `Height_m` *(resolved)* | SCHEMA.txt's consolidated-adjusted model is more precise and reflects actual live protocols -- `Field_Guide_Reference.txt`'s simpler version is retired [^1] |
 | `Crown_Width_m`, `Crown_Base_Height_m` | Float, meters | ✅ | — | |
 | `Date`, `Time` | Date / Text | ✅ | — | |
 | `Notes` | Text | ✅ | — | Currently also carries surveyor name and structured comments as free text. This field may be removed from public facing datasets for the interrest of privacy. See "Worth doing later" |
@@ -44,16 +42,14 @@ Across the documents, "accuracy" appears as ±2 m (project proposal's overall ta
 
 | Tier | Value | Purpose |
 |---|---|---|
-| **Collection-time floor** | Retake if reading is worse than ~5 m (10 m hard-stop) | What a volunteer accepts *in the moment*, per the GPS Best Practices Cheat Sheet 
-### NOTE:
-Ensure protocol is set and followed regarding ensuring hard-stop is strictly followed in-situ.
- |
-| **Dataset classification** | ≤3 m Verified · 3–5 m Conditional · >5 m Needs correction | How `GPS_Accuracy_m` is interpreted *after* collection, per `SCHEMA.txt` 
-### NOTE: 
-5m may be too conservative based on future avaiablity of additional GPS & based on validity of Garmin 65S unit during testing phase. |
+| **Collection-time floor** | Retake if reading is worse than ~5 m (10 m hard-stop) | What a volunteer accepts *in the moment*, per the GPS Best Practices Cheat Sheet [^2] |
+| **Dataset classification** | ≤3 m Verified · 3–5 m Conditional · >5 m Needs correction | How `GPS_Accuracy_m` is interpreted *after* collection, per `SCHEMA.txt` [^3] |
 | **Project-level goal** | ±2 m | The aggregate accuracy target for the finished, defensible dataset, per the project proposal's Measurable Outcomes |
 
-This table itself is the fix and ensures a concrete GPS accuracy scale.
+This table itself fixes and ensures a concrete GPS accuracy scale.
+
+[^2]: Open item -- confirm the ~5 m / 10 m hard-stop is actually being followed in-situ during collection days, not just jotten down.
+[^3]: The 3–5 m / >5 m thresholds may prove too conservative once GPS Accuracy Testing (Objective 1) produces real device-comparison numbers, particularly given early indications on Garmin GPSMAP 65s accuracy -- revisit after that testing, not prior.
 
 ## Recommended schema addition
 
