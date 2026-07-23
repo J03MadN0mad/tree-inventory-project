@@ -53,11 +53,11 @@ This table itself fixes and ensures a concrete GPS accuracy scale.
 [^2]: Open item -- confirm the ~5 m / 10 m hard-stop is actually being followed in-situ during collection days, not just jotten down.
 [^3]: The 3–5 m / >5 m thresholds may prove too conservative once GPS Accuracy Testing (Objective 1) produces real device-comparison numbers, particularly given early indications on Garmin GPSMAP 65s accuracy -- revisit after that testing, not prior.
 
-## Recommended schema addition
+## Schema addition -- adopted
 
-`Status`'s current allowed values (`Existing`, `Needs_Verification`, `Missing_Tag`, `New_2025`, `Uncertain_Location`, `Removed`) have no value for **exact or near-duplicate coordinate records** — a real, distinct QA case (instance of the same tree logged twice) that isn't the same as `Removed` (physically confirmed gone). Recommend adding:
+`Status`'s original allowed values (`Existing`, `Needs_Verification`, `Missing_Tag`, `New_2025`, `Uncertain_Location`, `Removed`) had no value for **exact or near-duplicate coordinate records** -- a real, distinct QA case (instance of the same tree logged twice) that isn't the same as `Removed` (physically confirmed gone). This document originally recommended adding one; **as of SCHEMA.txt v2 (2026-07-20), it's adopted:**
 
-- **`Duplicate_Candidate`** — flagged by automated QA as a likely duplicate location; requires human review before deletion, never auto-removed.
+- **`Duplicate_Candidate`** -- flagged by automated QA as a likely duplicate location and/or duplicate `Tag_ID`; requires human review before deletion, never auto-removed. `point_validation_toolkit.py` was already setting this value in practice; the schema now formally matches what the `point_validation_toolkit.py` script does.
 
 ## One naming inconsistency -- resolved
 
