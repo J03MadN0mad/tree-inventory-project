@@ -19,7 +19,9 @@
 | `Crown_Width_m`, `Crown_Base_Height_m` | Float, meters | ✅ | — | |
 | `Date`, `Time` | Date / Text | ✅ | — | |
 | `Notes` | Text | ✅ | — | Currently also carries surveyor name and structured comments as free text. This field may be removed from public facing datasets for the interrest of privacy. See "Worth doing later" |
-| `Photo` | Text (path/URL) | ✅ (as `Photo`) | ⚠️ named `Photo_URL` | Live sheet uses `Photo` |
+| `Photo` | Text (path/URL) | ✅ (as `Photo`) | ⚠️ named `Photo_URL` *(resolved)* | Both live sheet and SCHEMA.txt use `Photo` -- resolved 2026-07-20, keeping `Photo` |
+
+[^1]: SCHEMA.txt was created after the first two in-situ community data collection days (Dec. 2025 & April 2026), which is why its lean-adjusted height model postdates and supersedes Field_Guide_Reference.txt's simpler flat-height field.
 
 ## Fields defined in the schema but NOT yet present in the live dataset
 
@@ -34,7 +36,7 @@
 
 ## Resolved conflict #1 — DBH units
 
-`Field_Guide_Reference.txt` says `DBH_in` is measured in **centimeters**, contradicting its own field name (`_in` = inches) and contradicts `SCHEMA.txt`. The field data collection protocol settles it directly: volunteers are instructed to measure trunk diameter and enter it in **inches**. **`SCHEMA.txt` is correct. `Field_Guide_Reference.txt` has a units error and should be corrected or retired.**
+`Field_Guide_Reference.txt` said `DBH_in` was measured in **centimeters**, contradicting its own field name (`_in` = inches) and contradicting `SCHEMA.txt`. The field data collection protocol settles it directly: volunteers are instructed to measure trunk diameter and enter it in **inches**. **`SCHEMA.txt` was correct -- the live mastersheet already used inches, so no data changed.** `Field_Guide_Reference.txt` has been retired (2026-07-20) with this units error documented in its deprecation notice, rather than left to confuse a future reader.
 
 ## Resolved conflict #2 — GPS accuracy has three different numbers, and that's actually fine
 
@@ -57,9 +59,9 @@ This table itself fixes and ensures a concrete GPS accuracy scale.
 
 - **`Duplicate_Candidate`** — flagged by automated QA as a likely duplicate location; requires human review before deletion, never auto-removed.
 
-## One naming inconsistency to fix
+## One naming inconsistency -- resolved
 
-`SCHEMA.txt` uses `New_2025` as a `Status` value; `Field_Guide_Reference.txt` uses `New_Tree2025`. Pick one; `SCHEMA.txt`'s `New_2025` since that document is designated authoritative.
+`SCHEMA.txt` used `New_2025` as a `Status` value; `Field_Guide_Reference.txt` used `New_Tree2025`. **Resolved 2026-07-20:** `SCHEMA.txt`'s `New_2025` stands, since that document is authoritative -- and since `Field_Guide_Reference.txt` is now retired, there's no longer a second version in circulation to conflict with it.
 
 ## Automated desk-based QA's advantages and disadvantages
 
@@ -69,5 +71,6 @@ A desk-based check against existing coordinates can flag *possible* issues (poor
 
 Per `SCHEMA.txt` and the project proposal: primary storage is WGS 84 (EPSG:4326) decimal degrees, but analysis must happen in the working projection, **UTM Zone 11N (WGS 84)**. Run the validation script against the UTM 11N projected feature class, not the raw lat/long storage layer; the script's distance-based checks (duplicate tolerance) assume projected meters, and will silently misbehave against unprojected degree coordinates.
 
-## Photo field name resolution
-only the Phot vs 'Photo' header spelling. That's a structural naming issue, the same category as the other four discrepancies already in that file.
+## Photo field name -- resolved
+
+The only discrepancy was `Photo` (`SCHEMA.txt`, live sheet) vs. `Photo_URL` (`Field_Guide_Reference.txt`) -- a naming difference only, no underlying data change. **Resolved 2026-07-20:** the field stays `Photo`, matching both `SCHEMA.txt` and the live mastersheet; `Field_Guide_Reference.txt`'s `Photo_URL` naming is retired along with the rest of that document.
