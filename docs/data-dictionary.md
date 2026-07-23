@@ -25,12 +25,12 @@
 
 | Field | Defined in | Status |
 |---|---|---|
-| `Status` | `SCHEMA.txt` (marked **Required**) | **Not yet implemented in the live sheet.** This is the single biggest gap between the schema-as-written and the schema-as-lived. The validation script in `scripts/point_validation_toolkit.py` is written to populate this field for the first time, not to compete with an existing one. |
+| `Status` | `SCHEMA.txt` (marked **Required**) | **Not yet implemented in the live sheet.** This is the most substantial gap between the schema-as-written and the schema-as-lived. The validation script in `scripts/point_validation_toolkit.py` is written to populate this field for the first time, not to compete with an existing field. As of SCHEMA.txt v2 (2026-07-20), the domain includes `Duplicate_Candidate`-- previously just a recommendation within this document, now formally adopted (see "Recommended schema addition" below, updated to reflect this). |
 | `Surveyor_Name` | `SCHEMA.txt` | Not a separate column yet — currently embedded as the first line of the free-text `Notes`/comment field per the in-field collection protocol (e.g., "Team A, LEAD"). Worth eventually splitting into its own field, but that's a later cleanup, not urgent. This field may be removed from public facing datasets for the interrest of privacy. |
 
-## Fields in `Field_Guide_Reference.txt` that don't appear live or in `SCHEMA.txt`
+## Fields that existed only in `Field_Guide_Reference.txt` (retired)
 
-`Genus`, `Condition_Notes`, `Xcoord`/`Ycoord`, `Last_Verified` exist only in the older reference doc. TASK PRIOR TO FALL: retire or update `Field_Guide_Reference.txt` to match `SCHEMA.txt`, since the live data already tracks `SCHEMA.txt` almost exactly.
+`Genus`, `Condition_Notes`, `Xcoord`/`Ycoord`, `Last_Verified` existed only in the older reference doc and were never carried into the live schema. **RESOLVED 2026-07-20:** `Field_Guide_Reference.txt` has been formally retired (kept in the repo only as a deprecated historical record with its own deprecation notice) since the live data already tracked `SCHEMA.txt` almost exactly and these four fields were never adopted.
 
 ## Resolved conflict #1 — DBH units
 
