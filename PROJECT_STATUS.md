@@ -51,7 +51,7 @@ before `point_validation_toolkit.py` can be run against the official MASTERSHEET
 
 **Lessons from this phase:**
 
-- The three-way schema drift (SCHEMA.txt, Field_Guide_Reference.txt, and the live sheet quietly disagreeing with each other) happened because nothing was validating new reference documents against the ones already in use. Next time, any new protocol or reference doc gets checked against the existing ones *before* it's adopted, not reconciled after the fact.
+- The three-way schema drift (SCHEMA.md, Field_Guide_Reference.md, and the live sheet quietly disagreeing with each other) happened because nothing was validating new reference documents against the ones already in use. Next time, any new protocol or reference doc gets checked against the existing ones *before* it's adopted, not reconciled after the fact.
 - With a limited, defined number of authorized work hours as a fellow, the highest-leverage split wasn't "AI vs. me" — it was mechanical work vs. judgment calls. Delegating fast, well-defined tasks (reconciling documents, drafting scripts, formatting) freed my actual hours for the things that needed a person: deciding which schema value wins when two documents disagree, judging whether a protocol is field-ready, deciding what's true enough to publish.
 - The real fix for schema drift isn't another reference document — it's an automated validation step between Arboreal exports and the MASTERDATASHEET that checks incoming data against one canonical schema before it's merged in, so a fourth conflicting version can't quietly form the way the first three did.
 

@@ -14,7 +14,7 @@ against the raw WGS 84 lat/long storage layer will cause it to silently misbehav
 
 EXPECTED OUTCOMES UPON EXECUTING
 ------------
-Populates the existing `Status` field (already defined in SCHEMA.txt,
+Populates the existing `Status` field (already defined in SCHEMA.md,
 not yet populated in the live sheet; See 'data-dictionary.md') rather 
 than inventing a parallel status field. 
 Values used:

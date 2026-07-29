@@ -44,7 +44,7 @@ them as one contradictory number; directly referenced in `point_validation_SOP.m
 Peer-reviewed software suite (Eco, Streets, Canopy, and others) used by municipalities,
 universities, and volunteers nationwide for tree inventory and ecosystem-benefit analysis.
 <https://www.itreetools.org> · <https://research.fs.usda.gov/products/dataandtools/i-tree>
-**Informed:** `SCHEMA.txt`'s Overview section (cites i-Tree-inspired workflows); general
+**Informed:** `SCHEMA.md`'s Overview section (cites i-Tree-inspired workflows); general
 influence on which attributes this project tracks (species, DBH, condition, canopy).
 
 ### Esri ArcGIS Solutions -- Tree Management
@@ -97,7 +97,7 @@ A schema-driven ArcGIS Enterprise tree inventory (~22,300 trees) requiring a min
 leaf/bark photo and one tree-form photo per record, tracked via ArcGIS Field Maps and
 Dashboards.
 <https://www.esri.com/about/newsroom/arcwatch/counting-trees>
-**Informed:** the `Photo` field requirement and general schema shape in `SCHEMA.txt`; a
+**Informed:** the `Photo` field requirement and general schema shape in `SCHEMA.md`; a
 directly comparable scale and structure to this project's own inventory.
 
 ---

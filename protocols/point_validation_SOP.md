@@ -9,7 +9,7 @@ Every point currently in the GIS ends up in one of two states: **classified with
 
 A tree inventory feeding into climate action, canopy, or grant reporting is only as credible as its underlying spatial and attribute accuracy. This validation pass is what makes the dataset defensible when someone asks "how do you know these points are accurate?" — and it directly produces the "Data Integration & Quality" outcome in the project proposal.
 
-## 3. The `Status` field (already defined in `SCHEMA.txt`, not yet populated in the live sheet)
+## 3. The `Status` field (already defined in `SCHEMA.md`, not yet populated in the live sheet)
 
 | Value | Meaning | Set by this process when... |
 |---|---|---|
