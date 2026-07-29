@@ -4,7 +4,7 @@ A from-scratch effort to bring a municipal/organizational tree inventory to a sp
 
 🚧 **This project is in progress.** See [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) for an honest, current breakdown of what's done, what's underway, and what's still ahead. Nothing in this repo claims to be finished unless the status tracker says so.
 
-## Goal
+## Goals
 
 - Tree dataset is spatially accurate and defensible
 - GPS workflow is tested and scalable
@@ -28,7 +28,7 @@ A from-scratch effort to bring a municipal/organizational tree inventory to a sp
 
 ## Where to start
 
-If you only read one file, read `PROJECT_STATUS.md` — it's the single source of truth for what's actually complete versus planned.
+`PROJECT_STATUS.md` to be treated as the single source of truth for what's actually complete versus planned. It shows what has been been and what needs to be done by the project team. 
 
 ## License
 

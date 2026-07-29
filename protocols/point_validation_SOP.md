@@ -60,6 +60,7 @@ A point flagged `Uncertain_Location` can be resolved without a field visit only 
 5. Track weekly: % of inventory with a `Status` value assigned — not % `Existing`, since that's a later-summer target as remeasurement happens
 
 ## 8. Standards this approach draws on
+See `docs/REFERENCES.md` for full citations and what each source informed.
 
 - **Metadata structure** (positional accuracy, attribute accuracy, lineage/date) mirrors the core building blocks of ISO 19115 / FGDC CSDGM
 - **Accuracy reporting** — once GPS Accuracy Testing has real device-comparison numbers, consider stating dataset-wide accuracy in the NSSDA style (accuracy at a stated confidence level) alongside the project's ±2 m target, rather than a bare meters figure
