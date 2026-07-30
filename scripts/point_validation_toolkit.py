@@ -175,11 +175,16 @@ def run_validation():
                         new_notes.append(f"Automated QA: GPS accuracy {gps_acc} m in conditional range ({GPS_ACC_CONDITIONAL_M}-{GPS_ACC_FAIL_M} m), recommend recheck")
 
                 missing = []
-                if not species:
+                # .strip() check (not just truthiness) so a whitespace-only value --
+                # e.g. "Poor " -- isn't silently treated as present. Trailing
+                # whitespace on Species/Condition is a known live-data issue
+                # (see PROJECT_STATUS.md); this keeps the script honest about it
+                # until the mastersheet gets a proper trim pass in ArcGIS Pro.
+                if not species or not species.strip():
                     missing.append("Species")
                 if dbh is None:
                     missing.append("DBH_in")
-                if not condition:
+                if not condition or not condition.strip():
                     missing.append("Condition")
                 if missing and new_status is None:
                     new_status = STATUS_NEEDS_VERIFICATION
