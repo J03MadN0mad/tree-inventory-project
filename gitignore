@@ -1,0 +1,42 @@
+# Excludes GIS binary/large data and sensitive raw data from version control.
+# See docs/SCHEMA.md (Data Governance Rules), gis/README.md, and data/README.md
+# for where this excluded data actually lives.
+***# NOTE FROM AUTHOR: This gitignore file tells git which files or folders to never track or commit so when you or your team saves your work, git will transfer over anything listed in it instead of trying to add it. It's in our repo so nobody accidentally commits a huge raster or geodatabase file (which would bloat the repo and is a pain to undo..) -- it enforces the "heavy GIS data stays outside git" rule that we set up for this project, automatically.***
+
+# ArcGIS Pro
+*.gdb/
+*.gdb.zip
+*.mxd.lock
+*.aprx.lock
+*.sr.lock
+*.gpkg-wal
+*.gpkg-shm
+
+# Raster imagery (orthophotos, basemaps, elevation) — can be GBs each
+*.tif
+*.tiff
+*.img
+*.jp2
+
+# Shapefiles and sidecar files
+*.shp
+*.shx
+*.dbf
+*.prj
+*.sbn
+*.sbx
+*.cpg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Sensitive/production data - keep raw location data out of version control by default
+data/production/
+*.csv
+!data/sample/*.csv
+!data/exports/*.csv
