@@ -1,8 +1,8 @@
 # Tree Inventory GIS Modernization
 
-A from-scratch effort to bring a municipal/organizational tree inventory to a spatially accurate, standardized, and stakeholder-ready state — GPS workflow, field protocol, GIS system, and web map, documented as it's built rather than after the fact.
+A from-scratch effort to bring a municipal/organizational (community college campus in the case of this specific prokect) tree inventory to a spatially accurate, standardized, and stakeholder-ready state GPS workflow, field protocol, GIS system, and web map, documented as it's built rather than after the fact, to ensure transparancy, repeatability, and defensability. 
 
-🚧 **This project is in progress.** See [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) for an honest, current breakdown of what's done, what's underway, and what's still ahead. Nothing in this repo claims to be finished unless the status tracker says so.
+🚧 **This project is in progress.** See [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) for an honest, current breakdown of what's done, what's underway, and what's still ahead. Nothing in this repo claims to be finished unless the status tracker says so. Please ensure you, as the project lead/team implementing your own project, or new fellow project lead/team take the PROJECT_STATUS.md as a form to commnicate difinitive project status. 
 
 ## Goals
 
