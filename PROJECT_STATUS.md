@@ -23,12 +23,12 @@ This living document file exists so this repository never overstates where the p
 before `point_validation_toolkit.py` can be run against the official MASTERSHEET in *ArcGIS Pro*. Script logic has been tested against a 2-row csv sample outside ArcGIS Pro to confirm the checks behave correctly; the full run against real production data is queued for as soon as license access is restored.
 
 ## Data quality issues found during sample testing (RESOLVED;conducting check)
-- Tree_ID 2: Species "Quercia macrocarpa" — likely typo for Quercus macrocarpa (bur oak)
+- Tree_ID 2: Species "Quercia macrocarpa" -- likely typo for Quercus macrocarpa (bur oak)
 - Trailing whitespace present on some Species/Condition values. Worth a trim pass before final QA
 
 ## Access tiers (as currently planned)
 
-- **Public web map** — graphical point display, read-only
+- **Public web map** -- graphical point display, read-only
 - **Datasheet + raw GIS resources** (.shp, geodatabase, .tiff) -- fully public, extractable, once the inventory is validated. Deliberately open to any educational institution wanting to replicate this workflow, not gated to internal academics only.
 - **Facilities** -- needs elevated access to the web map for active management (likely edit-level, not just viewing). Specifics pending the department's ESRI licensing decision -- revisit once that's settled.
 
