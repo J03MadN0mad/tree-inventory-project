@@ -29,7 +29,7 @@ BEFORE EXECUTING SCRIPT
 --------------------
 1. TEST ON A COPY of the feature class first, not production data.
 2. Confirm the feature class is the UTM 11N projected version.
-3. Field names below already match the live MASTERDATASHEET schema —
+3. Field names below already match the live MASTERDATASHEET schema --
    only change CONFIG if your actual feature class differs from it.
 4. If `Status` doesn't yet exist as a field, this script adds it and
    is your first real population of it.
@@ -61,7 +61,7 @@ FIELD_DBH = "DBH_in"
 FIELD_CONDITION = "Condition"
 FIELD_GPS_ACC = "GPS_Accuracy_m"
 
-# Schema's own accuracy tiers (see data-dictionary.md) — not arbitrary
+# Schema's own accuracy tiers (see data-dictionary.md) -- not arbitrary
 GPS_ACC_CONDITIONAL_M = 3.0   # >3m and <=5m -> conditional
 GPS_ACC_FAIL_M = 5.0          # >5m -> needs correction
 
@@ -101,7 +101,7 @@ def find_duplicate_oids(fc):
             dup_oids.update(oid_list)
     return dup_oids
 
-## Added (PLACEHOLDER TO ADD NOTES HERE)
+# run this idenpendently with sample data
 def find_duplicate_tag_ids(fc, tag_field):
     """Return OIDs whose Tag_ID matches another record's Tag_ID."""
     tag_to_oids = {}
@@ -133,7 +133,7 @@ def point_in_boundary(x, y, sr, boundary_polys):
 def run_validation():
     ensure_fields(FC_PATH)
     dup_oids = find_duplicate_oids(FC_PATH)
-    dup_tag_oids = find_duplicate_tag_ids(FC_PATH, FIELD_TAG_ID) ##(PLACE HOLDER TO HERE )
+    dup_tag_oids = find_duplicate_tag_ids(FC_PATH, FIELD_TAG_ID) #(PLACE HOLDER TO HERE, Joe )
     sr = arcpy.Describe(FC_PATH).spatialReference
     boundary_polys = load_boundary_polygons(BOUNDARY_FC)
 
@@ -224,4 +224,4 @@ def export_flagged(fc, out_gdb, out_name="Points_NeedsReview"):
 if __name__ == "__main__":
     run_validation()
     # Uncomment once ready to produce the field/remote working list:
-    # export_flagged(FC_PATH, r"C:\path\to\your\Working.gdb")
+    # export_flagged(FC_PATH, r"C:\path\to\your\Working.gdb") <- your specific project path

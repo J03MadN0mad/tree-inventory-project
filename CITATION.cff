@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this workflow or dataset, please cite it as below."
-title: "Tree Inventory GIS Modernization"
+title: "Tree Inventory GIS Modernization" #We can change this title later to better reflect our entity.
 type: dataset
 authors:
   - name: "Joe Paredes"
-date-released: 2026-07-11
+date-released: TBD #Placeholder date to be changed once we are ready to publically release the dataset
 version: "0.1.0"

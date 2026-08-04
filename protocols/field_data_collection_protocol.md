@@ -9,6 +9,7 @@
 - Hammer and nails
 - Diameter measuring tape
 - Water, sun protection, and a phone charger (Arboreal drains battery quickly)
+- Garmin 65s GPS unit if applicaple 
 
 ## Team roles (four tasks per tree)
 
@@ -21,7 +22,7 @@
 
 ## Per-tree workflow
 
-1. **Measure with the app** (App User completes all digital measurements — see app steps below)
+1. **Measure with the app** (App User completes all digital measurements -- see app steps below)
 2. **Identify the species** — report the name to the App User; photograph and label with the tree's tag number if sent for further ID review
 3. **Find or place the tag** — if one exists, use its number in the app and don't add a new one; if none exists, place a new tag at eye level on the north side and report the number to the App User
 4. **Measure diameter** in inches at 4–5 ft height, report to the App User
@@ -39,6 +40,8 @@
 9. Enter the comment in this exact order: **Team/logger name → Species (scientific + common) → Condition (Good/Fair/Poor/Dead) → Notes** (specific: GPS issues, site conditions, anything relevant)
 
 **Example comment:** *(Team A, LEAD). Species: Sequoia sempervirens, coast redwood. Condition: Poor. Notes: Tree appears declining; very poor GPS signal even after following cheat sheet, no sky view, cars parked near tree.*
+
+***See 'gps_best_practices_cheatsheet' for further insight on gps accuracy pretocol during the data collection***
 
 ## End of day
 
