@@ -237,6 +237,10 @@ The schema follows best practices from:
   * 3–5m → Conditional
   * > 5m → Needs correction
 
+### **Collection_Method
+
+* **Type:** Text
+* **Description:** Record of which device (phone vs. Garmin) captured each point
 ---
 
 ## **Metadata Fields**

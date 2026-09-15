@@ -13,6 +13,7 @@ All notable changes to this project's schema and methodology are tracked here. F
 
 ### Changed
 - Point validation methodology and script rewritten to populate the schema's own `Status` field (rather than a separate custom field), using real field names and the schema's own GPS accuracy tiers (`protocols/point_validation_SOP.md`, `scripts/point_validation_toolkit.py`)
+- SCHEMA v2 (6/20/26), retiring Field_Guide_Reference.md, adding REFERENCES.md
 
 ### Fixed (documentation, not yet in live data)
 - Identified `DBH_in` units error in `Field_Guide_Reference.md` (says centimeters; actual protocol and field name confirm inches)

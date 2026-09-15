@@ -20,7 +20,7 @@ than inventing a parallel status field.
 Values used:
     - Needs_Verification    (default / legacy / missing attributes)
     - Uncertain_Location    (poor GPS accuracy / implausible position)
-    - Duplicate_Candidate   (*recommended new value* ; see data dictionary;
+    - Duplicate_Candidate   (*new value* ; see data dictionary;
                              flagged for human review, never auto-deleted)
 Left untouched (field-truth states this script cannot determine):
     - Existing, Missing_Tag, Removed, New_2025
@@ -72,7 +72,7 @@ FIELD_NOTES = "Notes"          # existing free-text field; validation notes are 
 
 STATUS_NEEDS_VERIFICATION = "Needs_Verification"
 STATUS_UNCERTAIN_LOCATION = "Uncertain_Location"
-STATUS_DUPLICATE_CANDIDATE = "Duplicate_Candidate"   # recommended new domain value
+STATUS_DUPLICATE_CANDIDATE = "Duplicate_Candidate"   # new domain value
 
 # Field-truth states this script NEVER sets (see SOP Section 6):
 # Existing, Missing_Tag, Removed, New_2025

@@ -1,13 +1,10 @@
 # References & Prior Art
 
-**Purpose:** This document records the external standards, tools, and comparable projects
-that informed decisions made elsewhere in this repo — so those decisions are grounded in
-outside precedent rather than invented from scratch, and so a future reader (or future you)
-can see *why* a choice was made, not just what it was.
+**Purpose:** This document records the external standards, tools, and comparable projects that informed decisions made elsewhere in this repo -- so those decisions are grounded in outside precedent rather than invented from scratch, for the purpose of future reference and to communicate *why* a choice was made, not just what it was.
 
 **How to use this file:** each entry states what it is, links to it, and names which
-decision(s) in this repo it actually informed. When a new source gets referenced in
-conversation or in a doc, add it here rather than re-describing it inline elsewhere — link
+decision(s) in this repo it actually informed. Except for *## General Relavent Data/Reference Sources* which is use for inspirational or informative references for the project.
+ When a new source gets referenced in conversation or in a doc, add it here rather than re-describing it inline elsewhere -- link
 back to this file instead. Same consolidation logic used for `SCHEMA.md` /
 `data-dictionary.md`: one authoritative place, everything else points to it.
 
@@ -118,7 +115,7 @@ if a reference turns out to be wrong, the record says so rather than quietly dis
 
 ## General Relavent Data/Reference Sources
 
-### PBS Tera - EXTREME  HEAT Is Getting Worse, and It Will Reshape Earth FOREVER 
+### PBS Terra - EXTREME  HEAT Is Getting Worse, and It Will Reshape Earth FOREVER 
 ***"Extreme heat is the deadliest kind of weather on Earth. Even as deaths from most weather decline, heat-related mortality is on the rise. Part of the reason? The very nature of extreme heat is changing. Climate change has unleashed a dramatic increase in dangerous “wet-bulb” events, when heat and humidity combine to overwhelm the human body’s ability to cool itself. In these episodes, we explore how extreme heat has begun redrawing the map of where humans can safely live, and the dangers and adaptations facing us in this new world."***
 PBS video on our current understanding of Urban Heat Islands in the US, their enviornmental & socio-economic causes, study, and potention resolutions.
 <https://www.youtube.com/watch?v=GL3YUDYWcTI>

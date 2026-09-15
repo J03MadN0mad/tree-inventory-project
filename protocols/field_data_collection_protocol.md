@@ -41,7 +41,7 @@
 
 **Example comment:** *(Team A, LEAD). Species: Sequoia sempervirens, coast redwood. Condition: Poor. Notes: Tree appears declining; very poor GPS signal even after following cheat sheet, no sky view, cars parked near tree.*
 
-***See 'gps_best_practices_cheatsheet' for further insight on gps accuracy pretocol during the data collection***
+***See 'gps_best_practices_cheat_sheet.md' for further insight on gps accuracy pretocol during the data collection***
 
 ## End of day
 

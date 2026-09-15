@@ -1,9 +1,9 @@
 # Project Status
 
-Last updated: 2026-07-13
+Last updated: 2026-08-22
 
 **NOTE TO FELLOW OR PROJECT LEAD**
-This living document file exists so this repository never overstates where the project actually is. Update it honestly as work happens. A "Not started" row is not a failure, it's information, transpancy, and accountability that is appreciated by all stakeholders.
+This living document file exists so this repository never overstates where the project actually is. Update it honestly as work happens. 
 
 | # | Objective | Status | Notes |
 |---|---|---|---|
@@ -22,7 +22,8 @@ This living document file exists so this repository never overstates where the p
 - **ESRI/ArcGIS Pro access pending.** Waiting on the campus GIS department to resolve licensing 
 before `point_validation_toolkit.py` can be run against the official MASTERSHEET in *ArcGIS Pro*. Script logic has been tested against a 2-row csv sample outside ArcGIS Pro to confirm the checks behave correctly; the full run against real production data is queued for as soon as license access is restored.
 
-## Data quality issues found during sample testing (RESOLVED;conducting check)
+## Data quality issues found during sample testing (conducting check) 
+##*Final review needed*
 - Tree_ID 2: Species "Quercia macrocarpa" -- likely typo for Quercus macrocarpa (bur oak)
 - Trailing whitespace present on some Species/Condition values. Worth a trim pass before final QA
 
@@ -43,7 +44,8 @@ before `point_validation_toolkit.py` can be run against the official MASTERSHEET
 
 - No live validation run has been executed against the actual inventory dataset. The script is written and matched to the real schema, but untested against real rows
 - Objectives 2, 5, 6, 7 have no documented output in this repo yet (To Be Initiated Late August 2026)
-- The recommended schema addition (`Duplicate_Candidate`) is a recommendation in this repo, not yet an approved change to the live schema
+- The recommended schema addition (`Duplicate_Candidate`) is a formally approved change to the live schema
+*This has been updated from "recommended" to approved change to the live schema.*
 - The field collection protocol has been tested on multiple ocasions, informally & formally, prior to this repo's existence; not yet re-validated against the version written here
 
 ## What I'd do differently
