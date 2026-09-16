@@ -29,6 +29,7 @@
 |---|---|---|
 | `Status` | `SCHEMA.md` (marked **Required**) | **Not yet implemented in the live sheet.** This is the most substantial gap between the schema-as-written and the schema-as-lived. The validation script in `scripts/point_validation_toolkit.py` is written to populate this field for the first time, not to compete with an existing field. As of SCHEMA.md v2 (2026-07-20), the domain includes `Duplicate_Candidate`-- previously just a recommendation within this document, now formally adopted (see "Recommended schema addition" below, updated to reflect this). |
 | `Surveyor_Name` | `SCHEMA.md` | Not a separate column yet — currently embedded as the first line of the free-text `Notes`/comment field per the in-field collection protocol (e.g., "Team A, LEAD"). Worth eventually splitting into its own field, but that's a later cleanup, not urgent. This field may be removed from public facing datasets for the interrest of privacy. |
+| `Collection_Method` | `SCHEMA.md` | Not yet implemented in the live data sheet. Added to support Objective 1 (GPS Accuracy Testing) by recording which device (`Smartphone_GNSS` vs `Garmin_GPSMAP_65s`) captured each point -- without it, phone-vs-Garmin accuracy comparison isn't possible. Not required, since it can't be captured retroactively for older points. |
 
 ## Fields that existed only in `Field_Guide_Reference.md` (retired)
 

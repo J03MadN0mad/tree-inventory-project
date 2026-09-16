@@ -2,7 +2,7 @@
 
 A from-scratch effort to bring any community college campus tree inventory to a spatially accurate, standardized, and stakeholder-ready state -- GPS workflow, field protocol, GIS system, and web map -- documented as it's built rather than after the fact, to support transparency, repeatability, and defensibility.
 
-🚧 **This project is in progress.** See [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) for a current breakdown of what's done, underway, and still ahead. Nothing in this repo claims to be finished unless the status tracker says so. If you're picking this project up from someone else, treat `PROJECT_STATUS.md` -- *not this README* -- as the definitive word on where our tree inventory project actually stands. Once this pilot project is finished and the current project lead's service ends, this repo will serve as documention for this project's continuation and as a reference for any community college that is interested in replicating this workflow.
+🚧 **This project is in progress.** See [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) for a current breakdown of what's done, underway, and still ahead. Nothing in this repo claims to be finished unless the status tracker says so. If you're picking this project up from someone else, treat `PROJECT_STATUS.md` -- *not this README* -- as the definitive word on where our tree inventory project actually stands. Once this pilot project is finished and the current project lead's service ends, this repo will serve as documentatiion for this project's continuation and as a reference for any community college that is interested in replicating this workflow.
 
 ## Goals
 

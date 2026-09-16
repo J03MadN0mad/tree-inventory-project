@@ -5,6 +5,8 @@ Last updated: 2026-08-22
 **NOTE TO FELLOW OR PROJECT LEAD**
 This living document file exists so this repository never overstates where the project actually is. Update it honestly as work happens. 
 
+
+**Below are the current 8 Objectives for our project and what they aim to achive:**
 | # | Objective | Status | Notes |
 |---|---|---|---|
 | 1 | GPS Accuracy Testing & Integration | 🟡 In progress | Validation methodology and ArcPy script built and updated to match the real schema (`protocols/point_validation_SOP.md`, `scripts/point_validation_toolkit.py`). Garmin GPSMAP 65s now in the toolkit as a dedicated hardware track alongside smartphone GNSS. First live run against the real inventory not yet completed. |
@@ -22,7 +24,7 @@ This living document file exists so this repository never overstates where the p
 - **ESRI/ArcGIS Pro access pending.** Waiting on the campus GIS department to resolve licensing 
 before `point_validation_toolkit.py` can be run against the official MASTERSHEET in *ArcGIS Pro*. Script logic has been tested against a 2-row csv sample outside ArcGIS Pro to confirm the checks behave correctly; the full run against real production data is queued for as soon as license access is restored.
 
-## Data quality issues found during sample testing (conducting check) 
+## Data quality issues found during sample testing (conducting check)
 ##*Final review needed*
 - Tree_ID 2: Species "Quercia macrocarpa" -- likely typo for Quercus macrocarpa (bur oak)
 - Trailing whitespace present on some Species/Condition values. Worth a trim pass before final QA
@@ -30,7 +32,7 @@ before `point_validation_toolkit.py` can be run against the official MASTERSHEET
 ## Access tiers (as currently planned)
 
 - **Public web map** -- graphical point display, read-only
-- **Datasheet + raw GIS resources** (.shp, geodatabase, .tiff) -- fully public, extractable, once the inventory is validated. Deliberately open to any educational institution wanting to replicate this workflow, not gated to internal academics only.
+- **Datasheet + raw GIS resources** (.shp, geodatabase, .tiff) -- fully public, extractable, once the inventory is validated. Deliberately open to any community college wanting to replicate this workflow, not gated to internal academics only.
 - **Facilities** -- needs elevated access to the web map for active management (likely edit-level, not just viewing). Specifics pending the department's ESRI licensing decision -- revisit once that's settled.
 
 ## What's tangible at this time
@@ -47,6 +49,7 @@ before `point_validation_toolkit.py` can be run against the official MASTERSHEET
 - The recommended schema addition (`Duplicate_Candidate`) is a formally approved change to the live schema
 *This has been updated from "recommended" to approved change to the live schema.*
 - The field collection protocol has been tested on multiple ocasions, informally & formally, prior to this repo's existence; not yet re-validated against the version written here
+- (`Collection_Method`) is defined in the schema but not yet added to the live mastersheet.
 
 ## What I'd do differently
 **(NOTE TO FELLOW: revisit once the first live validation run gives real results to reflect and consolidate on.)**

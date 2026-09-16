@@ -237,9 +237,11 @@ The schema follows best practices from:
   * 3–5m → Conditional
   * > 5m → Needs correction
 
-### **Collection_Method
+---
 
-* **Type:** Text
+### **Collection_Method**
+
+* **Type:** Text (Domain Controlled)
 * **Allowed Values:** Smartphone_GNSS, Garmin_GPSMAP_65s
 * **Required:** No
 * **Description:** Device used to capture this point's coordinates.
