@@ -11,6 +11,10 @@ All notable changes to this project's schema and methodology are tracked here. F
 - GPS best practices cheat sheet, including a new Garmin GPSMAP 65s hardware workflow section (`protocols/gps_best_practices_cheat_sheet.md`)
 - Field data collection protocol, formalized from the existing team workflow (`protocols/field_data_collection_protocol.md`)
 
+## [2026-09-XX]
+### Added
+- `Collection_Method` field added to SCHEMA.md -- records phone vs. Garmin GPSMAP 65s per point, enabling Objective 1's device-accuracy comparison
+
 ### Changed
 - Point validation methodology and script rewritten to populate the schema's own `Status` field (rather than a separate custom field), using real field names and the schema's own GPS accuracy tiers (`protocols/point_validation_SOP.md`, `scripts/point_validation_toolkit.py`)
 - SCHEMA v2 (6/20/26), retiring Field_Guide_Reference.md, adding REFERENCES.md

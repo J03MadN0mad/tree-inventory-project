@@ -3,7 +3,7 @@
 **Purpose:** This document records the external standards, tools, and comparable projects that informed decisions made elsewhere in this repo -- so those decisions are grounded in outside precedent rather than invented from scratch, for the purpose of future reference and to communicate *why* a choice was made, not just what it was.
 
 **How to use this file:** each entry states what it is, links to it, and names which
-decision(s) in this repo it actually informed. Except for *## General Relavent Data/Reference Sources* which is use for inspirational or informative references for the project.
+decision(s) in this repo it actually informed. Except for *## General Relevant Data/Reference Sources* which is use for inspirational or informative references for the project.
  When a new source gets referenced in conversation or in a doc, add it here rather than re-describing it inline elsewhere -- link
 back to this file instead. Same consolidation logic used for `SCHEMA.md` /
 `data-dictionary.md`: one authoritative place, everything else points to it.

@@ -10,7 +10,7 @@ A from-scratch effort to bring any community college campus tree inventory to a 
 - GPS workflow is tested and scalable
 - Field operations are structured and repeatable
 - Initial GIS model system is standardized and documented
-- Web map is created 
+- Web map is stable and stakeholder-ready
 
 ## Where to start (by what you're trying to do)
 

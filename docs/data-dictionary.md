@@ -1,6 +1,6 @@
 # Data Dictionary — Reconciled Schema
 
-**Status:** Living document — now a reconciliation *record* rather than an open reconciliation. As of 2026-07-20, `SCHEMA.md` (v2) is the single authoritative schema and `Field_Guide_Reference.md` has been formally retired (see its deprecation notice for details). This document preserves the reasoning behind each resolved conflict between `SCHEMA.md`, the now-retired `Field_Guide_Reference.md`, and the live MASTERDATASHEET column headers — the GIS Protocol Standardization deliverable.
+**Status:** Archived *record* rather than an open reconciliation. As of 2026-07-20, `SCHEMA.md` (v2) is the single authoritative schema and `Field_Guide_Reference.md` has been formally retired (see its deprecation notice for details). This document preserves the reasoning behind each resolved conflict between `SCHEMA.md`, the now-retired `Field_Guide_Reference.md`, and the live mastersheet column headers -- which resolve our GIS Protocol Standardization deliverable.
 
 ## Fields currently active in the live dataset
 

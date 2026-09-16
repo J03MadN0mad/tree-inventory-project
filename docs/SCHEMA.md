@@ -240,7 +240,10 @@ The schema follows best practices from:
 ### **Collection_Method
 
 * **Type:** Text
-* **Description:** Record of which device (phone vs. Garmin) captured each point
+* **Allowed Values:** Smartphone_GNSS, Garmin_GPSMAP_65s
+* **Required:** No
+* **Description:** Device used to capture this point's coordinates.
+* **Purpose:** Lets GPS Accuracy Testing (Objective 1) compare device performance.
 ---
 
 ## **Metadata Fields**
