@@ -6,7 +6,7 @@ Last updated: 2026-08-22
 This living document file exists so this repository never overstates where the project actually is. Update it honestly as work happens. 
 
 
-**Below are the current 8 Objectives for our project and what they aim to achive:**
+**Below are the current 8 Objectives for our project and what they aim to achieve:**
 | # | Objective | Status | Notes |
 |---|---|---|---|
 | 1 | GPS Accuracy Testing & Integration | 🟡 In progress | Validation methodology and ArcPy script built and updated to match the real schema (`protocols/point_validation_SOP.md`, `scripts/point_validation_toolkit.py`). Garmin GPSMAP 65s now in the toolkit as a dedicated hardware track alongside smartphone GNSS. First live run against the real inventory not yet completed. |
@@ -25,7 +25,7 @@ This living document file exists so this repository never overstates where the p
 before `point_validation_toolkit.py` can be run against the official MASTERSHEET in *ArcGIS Pro*. Script logic has been tested against a 2-row csv sample outside ArcGIS Pro to confirm the checks behave correctly; the full run against real production data is queued for as soon as license access is restored.
 
 ## Data quality issues found during sample testing (conducting check)
-##*Final review needed*
+## *Final review needed*
 - Tree_ID 2: Species "Quercia macrocarpa" -- likely typo for Quercus macrocarpa (bur oak)
 - Trailing whitespace present on some Species/Condition values. Worth a trim pass before final QA
 
@@ -38,16 +38,15 @@ before `point_validation_toolkit.py` can be run against the official MASTERSHEET
 ## What's tangible at this time
 
 - A triage methodology and ArcPy script that populate the project's own existing `Status` field, matched against the actual live schema
-- A reconciled data dictionary that resolved four concrete, archived discrepancies across the project's three schema documents (see `docs/data-dictionary.md`)
+- A reconciled data dictionary that resolved four concrete discrepancies across the project's three schema documents (see `docs/data-dictionary.md`)
 - The full in-field data collection protocol and GPS best practices cheat sheet, formalized from existing working documents, including a new Garmin GPSMAP 65s GNSS hardware workflow
 - A documentation practice split across the project team's internal documentation and this public repo, with a defined rule for when something graduates from draft to public record
+- The recommended schema addition (`Duplicate_Candidate`) is a formally approved change to the live schema
 
 ## What's not real yet (and won't be claimed as such)
 
 - No live validation run has been executed against the actual inventory dataset. The script is written and matched to the real schema, but untested against real rows
-- Objectives 2, 5, 6, 7 have no documented output in this repo yet (To Be Initiated Late August 2026)
-- The recommended schema addition (`Duplicate_Candidate`) is a formally approved change to the live schema
-*This has been updated from "recommended" to approved change to the live schema.*
+- Objectives 5, 6, 7 have no documented output in this repo yet (To Be Initiated Late October 2026)
 - The field collection protocol has been tested on multiple ocasions, informally & formally, prior to this repo's existence; not yet re-validated against the version written here
 - (`Collection_Method`) is defined in the schema but not yet added to the live mastersheet.
 
@@ -57,11 +56,11 @@ before `point_validation_toolkit.py` can be run against the official MASTERSHEET
 **Lessons from this phase:**
 
 - The three-way schema drift (SCHEMA.md, Field_Guide_Reference.md, and the live sheet quietly disagreeing with each other) happened because nothing was validating new reference documents against the ones already in use. Next time, any new protocol or reference doc gets checked against the existing ones *before* it's adopted, not reconciled after the fact.
-- #**origin of diligence reporting in relation to LLM usage within this projet**: With a limited, defined number of authorized work hours as a fellow, the highest-leverage split wasn't "AI vs. me"  it was mechanical work vs. judgment calls. Delegating fast, well-defined tasks (reconciling documents, drafting and troubleshooting of established scripts, formatting) freed my actual hours for the prioritized tasks that needed a person: deciding which schema value wins when two documents disagree, judging whether a protocol is field-ready, deciding what's true enough to publish. Criteria that must be reviewed and finalized by the fellow/project team. 
+- **origin of diligence reporting in relation to LLM usage within this project**: With a limited, defined number of authorized work hours as a fellow, the highest-leverage split wasn't "AI vs. me"  it was mechanical work vs. judgment calls. Delegating fast, well-defined tasks (reconciling documents, drafting and troubleshooting of established scripts, formatting) freed my actual hours for the prioritized tasks that needed a person: deciding which schema value wins when two documents disagree, judging whether a protocol is field-ready, deciding what's true enough to publish. Criteria that must be reviewed and finalized by the fellow/project team. 
 - The real fix for schema drift is an automated validation step between Arboreal exports and the MASTERDATASHEET that checks incoming data against one canonical schema before it's merged in, so a fourth conflicting version can't quietly form the same way the first three did.
 
 **Priorities before the next community data collection day:**
 
-- Technology limitations need to be addressed *before* a collection day, not discovered during one -- specifically, confirming GPS accuracy expectations (phone vs. Garmin, when to use which) are understood by every volunteer beforehand, not troubleshot tree-by-tree in the field -- which may introduce collector fatiuge. 
+- Technology limitations need to be addressed *before* a collection day, not discovered during one -- specifically, confirming GPS accuracy expectations (phone vs. Garmin, when to use which) are understood by every volunteer beforehand, not troubleshot tree-by-tree in the field -- which may introduce collector fatigue. 
 - Data quality depends as much on consistent execution across volunteer sessions as it does on the schema itself. Building a small network of trained, reliable student leaders -- trained specifically on `field_data_collection_protocol.md` -- matters as much as any tooling decision.
 - A deliberate partnership with the campus's newly developing GIS department is worth pursuing now rather than letting it happen informally --internally, it's a path to longer-term technical support and hosting; a working, documented tree inventory is a genuine contribution to a department still establishing itself.
