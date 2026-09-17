@@ -113,7 +113,7 @@ if a reference turns out to be wrong, the record says so rather than quietly dis
   campus tree-map project could not be verified on follow-up research and has been dropped.
   Replaced with the verified Iowa State and University of Iowa entries above.
 
-## General Relavent Data/Reference Sources
+## General Relevant Data/Reference Sources
 
 ### PBS Terra - EXTREME  HEAT Is Getting Worse, and It Will Reshape Earth FOREVER 
 ***"Extreme heat is the deadliest kind of weather on Earth. Even as deaths from most weather decline, heat-related mortality is on the rise. Part of the reason? The very nature of extreme heat is changing. Climate change has unleashed a dramatic increase in dangerous “wet-bulb” events, when heat and humidity combine to overwhelm the human body’s ability to cool itself. In these episodes, we explore how extreme heat has begun redrawing the map of where humans can safely live, and the dangers and adaptations facing us in this new world."***

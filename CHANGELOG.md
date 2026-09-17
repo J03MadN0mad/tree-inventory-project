@@ -2,6 +2,11 @@
 
 All notable changes to this project's schema and methodology are tracked here. Format loosely follows [Keep a Changelog](https://keepachangelog.com/): dated, human-readable, newest first.
 
+### Pending
+- First live validation run results against the actual inventory
+- Sample MASTERGISSHEET rows to test the updated script logic against real data
+(*Both to be complete by December 2026*)
+
 ## [2026-09-11]
 ### Added
 - `Collection_Method` field added to SCHEMA.md -- records phone vs. Garmin GPSMAP 65s per point, enabling Objective 1's device-accuracy comparison
@@ -18,8 +23,3 @@ All notable changes to this project's schema and methodology are tracked here. F
 - Point validation methodology and script rewritten to populate the schema's own `Status` field (rather than a separate custom field), using real field names and the schema's own GPS accuracy tiers (`protocols/point_validation_SOP.md`, `scripts/point_validation_toolkit.py`)
 - SCHEMA v2, retiring Field_Guide_Reference.md, adding REFERENCES.md
 - Decision on adding the recommended `Duplicate_Candidate` Status value to the live schema changed to resolved
-
-
-### Pending
-- First live validation run results against the actual inventory (*to be complete by September 23rd*)
-- Sample MASTERGISSHEET rows to test the updated script logic against real data
