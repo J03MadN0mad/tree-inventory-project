@@ -18,6 +18,7 @@ A from-scratch effort to bring any community college campus tree inventory to a 
 |---|---|
 | New to this project entirely | [`PROJECT_STATUS.md`](./PROJECT_STATUS.md), then [`docs/overview.md`](./docs/overview.md) |
 | Checking or editing the data schema | [`docs/SCHEMA.md`](./docs/SCHEMA.md) is authoritative -- [`docs/data-dictionary.md`](./docs/data-dictionary.md) explains *why* it looks the way it does |
+| Running the ArcGIS Pro workflow | [`gis/arcgis_pro_workflow.md`](./gis/arcgis_pro_workflow.md) |
 | Running or supervising a field collection day | [`protocols/field_data_collection_protocol.md`](./protocols/field_data_collection_protocol.md) + [`protocols/gps_best_practices_cheat_sheet.md`](./protocols/gps_best_practices_cheat_sheet.md) |
 | Running the point validation script | [`scripts/point_validation_toolkit.py`](./scripts/point_validation_toolkit.py), guided by [`protocols/point_validation_SOP.md`](./protocols/point_validation_SOP.md) |
 | Looking for the reasoning or prior art behind a decision | [`docs/REFERENCES.md`](./docs/REFERENCES.md) |

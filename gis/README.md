@@ -10,8 +10,10 @@ principle: edits happen in the GIS environment, not in git-tracked raw files.
 
 ```
 gis/
-  project/        ← .aprx project file(s), .lyrx layer/style files
-  README.md       ← this file
+  project/                          ← .aprx project file(s), .lyrx layer/style files
+  database_development_workflow.md ← Excel-to-GIS staging, cleaning, reconciliation process
+  arcgis_pro_workflow.md           ← ArcGIS Pro procedure: import, projection, NDVI, web map
+  README.md                        ← this file
 ```
 
 ## Where the real data lives
