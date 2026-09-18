@@ -25,6 +25,7 @@ A from-scratch effort to bring any community college campus tree inventory to a 
 | Looking for the reasoning or prior art behind a decision | [`docs/REFERENCES.md`](./docs/REFERENCES.md) |
 | Looking for the GIS project file or where the real spatial data lives | [`gis/README.md`](./gis/README.md) |
 | Looking for exported data or test data | [`data/README.md`](./data/README.md) |
+| Reconciling a new field collection into the mastersheet | [`gis/data_integration_checklist.md`](./gis/data_integration_checklist.md) |
 | Contributing a change | [`CONTRIBUTING.md`](./CONTRIBUTING.md) |
 
 ## Repository layout

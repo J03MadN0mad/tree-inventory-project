@@ -13,6 +13,7 @@ gis/
   project/                          ← .aprx project file(s), .lyrx layer/style files
   database_development_workflow.md ← Excel-to-GIS staging, cleaning, reconciliation process
   arcgis_pro_workflow.md           ← ArcGIS Pro procedure: import, projection, NDVI, web map
+  data_integration_checklist.md     ← step-by-step reconciliation checklist for each new field collection
   README.md                        ← this file
 ```
 

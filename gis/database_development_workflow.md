@@ -66,6 +66,8 @@ Before anything moves from Working to Master, incoming data must be aligned to `
 <details>
 <summary><strong>3. Data Reconciliation (Critical)</strong></summary>
 
+*For the step-by-step version of this process, see `gis/data_integration_checklist.md`*
+
 All new data must be compared against the existing Master dataset before it's merged in -- this is what prevents the same tree from quietly existing twice, or an update silently overwriting the wrong record.
 
 **Decision logic (Tree_ID as primary key):**
