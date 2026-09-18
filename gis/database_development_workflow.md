@@ -59,7 +59,7 @@ Before anything moves from Working to Master, incoming data must be aligned to `
 - Remove duplicates *within the incoming batch itself* (this is separate from Section 3's reconciliation against the *existing* Master dataset -- a batch can have internal duplicates even before it's compared to anything already on file)
 - Standardize `Tree_ID` format (see `SCHEMA.md`: permanent, unique, never reassigned -- get this right before Master, since fixing it after integration means changing a key that downstream records may already reference)
 - Extract structured values out of free-text notes/comments where needed (e.g., a surveyor name embedded in a comment string, per the format `field_data_collection_protocol.md` specifies)
-- Resolve text-vs-numeric formatting issues (a `DBH_in` value stored as text instead of a number will silently fail numeric comparisons downstream, including in `point_validation_toolkit.py`'s attribute-completeness check)
+- Resolve text-vs-numeric formatting issues (a DBH_in value stored as text instead of a number will silently fail numeric comparisons downstream, including in point_validation_toolkit.py's attribute-completeness check)
 
 </details>
 
@@ -79,7 +79,7 @@ All new data must be compared against the existing Master dataset before it's me
 | Tree expected but not found in field | Mark as `Removed` -- **field-confirmed only**, per `SCHEMA.md` and `point_validation_SOP.md` Section 6; a desk-based reconciliation pass cannot assign this on its own |
 | Same coordinates and/or same `Tag_ID` as another existing record | Flag as `Duplicate_Candidate` -- automated, never auto-deleted, requires human review (see `SCHEMA.md`) |
 **Note to Internal Team**
-That last row is new relative to the original draft -- `Duplicate_Candidate` didn't exist as a `Status` value when this document was first written, but it's now a formally adopted part of the schema, and duplicate detection is already core to what `point_validation_toolkit.py` does (once properly tested and deployed officially). Leaving it out here would make this document describe an outdated version of the reconciliation process.
+*That last row is new relative to the original draft -- Duplicate_Candidate didn't exist as a Status value when this document was first written, but it's now a formally adopted part of the schema, and duplicate detection is already core to point_validation_toolkit.py's logic and our general data collection protocol. That said -- per PROJECT_STATUS.md, the script has only been tested against a small sample outside ArcGIS Pro so far; its first full run against live production data hasn't happened yet. Leaving Duplicate_Candidate out here would still describe an outdated version of the reconciliation process -- but don't read this row as confirmation that the script has actually been run against real inventory data yet. That is still pending.*
 
 </details>
 
@@ -109,7 +109,7 @@ Once a batch has cleared staging (Section 2) and reconciliation (Section 3), it'
 <details>
 <summary><strong>6. Spatial Accuracy Standards</strong></summary>
 
-The ≤3m / 3–5m / >5m accuracy tiers used to classify incoming points are defined once in `SCHEMA.md` and explained in more depth -- including *why* there are three different accuracy numbers across this project's documents and what each one is actually measuring -- in `data-dictionary.md`'s "Resolved conflict #2." Rather than repeat that table a third time here, the short version: this workflow applies the same tiers `point_validation_toolkit.py` already enforces automatically, so a point that passes desk-based validation and a point that passes manual reconciliation are being held to the identical standard.
+Accuracy tiers (≤3m / 3–5m / >5m) are defined in `SCHEMA.md`, with the full reasoning behind them in `data-dictionary.md`'s "Resolved conflict #2." This workflow uses those same tiers -- the ones point_validation_toolkit.py enforces automatically -- so manual reconciliation and automated validation hold every point to the same standard.
 
 </details>
 
@@ -145,6 +145,9 @@ Practical issues encountered doing this work, and what's fixed each one so far. 
 <summary><strong>8. Data Governance Rules</strong></summary>
 
 `SCHEMA.md`'s own "Data Governance Rules" section is the authoritative version of this -- `Tree_ID` as the authoritative key, CSVs as read-only for geometry, edits happening in the GIS environment rather than raw files. This document doesn't restate that list a second time for the same reason Section 4 (Status) and Section 6 (accuracy tiers) don't: one authoritative copy, everything else points to it.
+
+**Closing the loop** -- how a GIS edit reaches the mastersheet: 
+Say a vector point for one of our trees gets nudged in ArcGIS Pro to more accurately reflect the tree's real-world location, checked against imagery. That new Latitude/Longitude is in the feature class's attribute table the moment the edit is made. The mastersheet does not get manually re-edited to match it. Instead, per `data/README.md`'s exports/ convention, a periodic validated export gets generated from the feature class and becomes the current mastersheet snapshot (tree_inventory_YYYY-MM-DD.csv). Within the GIS (ArcPro for our project), edits only ever flow one direction -- feature class → exported mastersheet, never the reverse -- so there's never a scenario where two people are independently editing the same tree's coordinates in two different places at once. The tradeoff, already spelled out in data/README.md, is that the mastersheet is only ever accurate "as of" its export date -- never assume it reflects same-day edits still sitting in ArcGIS Pro. In other words, it would be good practice to ensure replace the mastersheet as soon as you finish edits and log the changes you've made.
 
 </details>
 

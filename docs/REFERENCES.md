@@ -46,6 +46,10 @@ universities, and volunteers nationwide for tree inventory and ecosystem-benefit
 **Informed:** `SCHEMA.md`'s Overview section (cites i-Tree-inspired workflows); general
 influence on which attributes this project tracks (species, DBH, condition, canopy).
 
+OpenTreeMap (Azavea)
+
+Open-source software for collaborative, geography-enabled urban tree inventory, used by municipal and community tree-map projects (PhillyTreeMap, UrbanForestMap, TreeMapLA, and others) to let a mix of professionals and public volunteers contribute to the same inventory. https://github.com/OpenTreeMap/otm-core Informed: the general feasibility of a mixed professional/volunteer contribution model for this project's own dataset -- a comparable open-source precedent for combining crowd-sourced and professionally-verified tree records, distinct from Esri's managed solution below.
+
 ### Esri ArcGIS Solutions — Tree Management
 Esri's packaged solution for municipal tree inventories: field data collection, inspection
 workflows, condition tracking, and public-facing apps.
@@ -106,12 +110,7 @@ directly comparable scale and structure to this project's own inventory.
 
 ## Correction log
 
-*(Kept deliberately, in the same spirit as this repo's honesty-first approach elsewhere —
-if a reference turns out to be wrong, the record says so rather than quietly disappearing.)*
-
-- **2026-07-20:** An earlier informal mention of a "UIC" (University of Illinois Chicago)
-  campus tree-map project could not be verified on follow-up research and has been dropped.
-  Replaced with the verified Iowa State and University of Iowa entries above.
+- **2026-07-20:** An earlier informal mention of a "UIC" (University of Illinois Chicago) campus tree-map project could not be verified on follow-up research and has been dropped. Replaced with the verified Iowa State and University of Iowa entries above.
 
 ## General Relevant Data/Reference Sources
 
