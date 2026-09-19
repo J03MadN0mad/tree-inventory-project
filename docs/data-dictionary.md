@@ -54,6 +54,17 @@ This table itself fixes and ensures a concrete GPS accuracy scale.
 [^2]: Open item -- confirm the ~5 m / 10 m hard-stop is actually being followed in-situ during collection days, not just jotten down.
 [^3]: The 3–5 m / >5 m thresholds may prove too conservative once GPS Accuracy Testing (Objective 1) produces real device-comparison numbers, particularly given early indications on Garmin GPSMAP 65s accuracy -- revisit after that testing, not prior.
 
+## Resolved conflict #3 — Tree_ID format
+
+`SCHEMA.md`'s original Format Examples (`000123`, `2022-045`) didn't match the
+real MASTERDATASHEET. The live data uses two parallel formats: a 4-digit
+zero-padded number for tagged trees (`0001`) and a `UT-` prefix + 3-digit
+zero-padded number for untagged trees (`UT-001`). Both examples in `SCHEMA.md`
+have been corrected to match the project's set standard. Because both depend on leading zeros,
+`Tree_ID` must always be handled as text, never as a number -- a plain numeric
+read (default CSV import in Excel or most scripting tools) silently drops the
+leading zeros and corrupts the ID.
+
 ## Schema addition -- adopted
 
 `Status`'s original allowed values (`Existing`, `Needs_Verification`, `Missing_Tag`, `New_2025`, `Uncertain_Location`, `Removed`) had no value for **exact or near-duplicate coordinate records** -- a real, distinct QA case (instance of the same tree logged twice) that isn't the same as `Removed` (physically confirmed gone). This document originally recommended adding one; **as of SCHEMA.md v2 (2026-07-20), it's adopted:**

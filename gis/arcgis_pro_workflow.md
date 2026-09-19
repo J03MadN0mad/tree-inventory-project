@@ -82,8 +82,7 @@ Once points exist as a proper feature class, both geometry and attributes get co
 
 Multispectral or already-processed raster imagery covering the campus extent.
 
-**ADD workflow for this using open source imagery source**
-Recommended source: NAIP (National Agriculture Imagery Program) -- free, public domain, currently flown at roughly 0.6m resolution nationwide; currently used by our project. Available through USGS's The National Map (nationalmap.gov) or USDA's Geospatial Data Gateway (datagateway.nrcs.usda.gov). Worth knowing specifically for this step: NAIP ships as 4-band imagery — Red, Green, Blue, and Near-Infrared — required for NDVI analysis, if you chose to utilize that index. A standard RGB-only basemap like ESRI World Imagery doesn't carry a NIR band, so for NDVI specifically. If the campus's state or county GIS portal publishes its own orthoimagery -- some go sub-1ft, sharper than NAIP -- but they typically won't include the NIR band NAIP does.
+**Recommended source:** NAIP (National Agriculture Imagery Program) -- free, public domain, currently flown at roughly 0.6m resolution nationwide, currently used by this project. Available through USGS's The National Map (nationalmap.gov) or USDA's Geospatial Data Gateway (datagateway.nrcs.usda.gov). Worth knowing specifically for this step: NAIP ships as 4-band imagery -- Red, Green, Blue, and Near-Infrared -- required for NDVI analysis, if you choose to use that index. A standard RGB-only basemap like ESRI World Imagery doesn't carry a NIR band, so for NDVI specifically, NAIP is close to the only workable free option. If the campus's state or county GIS portal publishes its own orthoimagery, it's worth checking too -- some go sub-1ft, sharper than NAIP -- though they typically won't include the NIR band NAIP does.
 
 **Step 2 — Calculate NDVI**
 Formula: `NDVI = (NIR − Red) / (NIR + Red)`
@@ -93,9 +92,9 @@ This produces a per-pixel value from −1 to 1, where higher values indicate den
 **Step 3 — Raster processing**
 
 - Clip the raster to the campus boundary (working from a smaller extent avoids processing imagery for areas the project has no use for)
-    *you may need to create a boundary layer of your campus first*
-    **ADD WORKFLOW FOR THIS**
-- Reclassify values if a simplified category scheme (e.g., low/medium/high vegetation) is more useful than a continuous gradient for a given map
+    *If a boundary polygon doesn't already exist, digitize it once in ArcGIS Pro by tracing the campus perimeter over aerial imagery, save it as its own feature class, and reuse it for every future clip -- this is a one-time setup, not a per-analysis step. If the campus's county assessor or planning department already publishes parcel boundaries, importing and dissolving the relevant parcels is usually faster and more accurate than hand-tracing* (ADD TO THIS ONCE I RUN THE PROCESS)
+
+-Reclassify values if a simplified category scheme (e.g., low/medium/high vegetation) is more useful than a continuous gradient for a given map
 - Apply a color ramp: red → low vegetation, green → high vegetation
 
 </details>

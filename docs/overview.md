@@ -31,13 +31,11 @@ See [`PROJECT_STATUS.md`](../PROJECT_STATUS.md) for current status of each. The 
 7. Mentorship & Shadowing Program (Fall Launch)
 8. Documentation & Knowledge Repository (this repository)
 
-    *Note: NDVI (vegetation index) analysis, part of the ArcGIS Pro     
-    workflow (see `gis/arcgis_pro_workflow.md`), is a supplementary
-    technique for visualizing tree canopy -- not tied to a specific
-    objective above, and not a required deliverable of any one of them.*
-
 *Note: NDVI (vegetation index) analysis, part of the ArcGIS Pro workflow (see
-`gis/arcgis_pro_workflow.md`), is a supplementary technique for visualizing tree canopy -- not tied to a specific objective above, and not a required deliverable of any one of them.Each project is free to incorporate this workflow as pleased.*
+`gis/arcgis_pro_workflow.md`), is a supplementary technique for visualizing tree
+canopy -- not tied to a specific objective above, and not a required deliverable
+of any one of them. Each project is free to incorporate this workflow as it
+sees fit.*
 
 ## Measurable outcomes (from the project proposal)
 
@@ -47,7 +45,7 @@ See [`PROJECT_STATUS.md`](../PROJECT_STATUS.md) for current status of each. The 
 | Data integration & quality | All Arboreal, GPS, and field data integrated into one standardized GIS dataset after QA/QC |
 | GIS system established | Authoritative ArcGIS Pro feature class created, projected, and validated (see `gis/arcgis_pro_workflow.md`) |  
 | Mapping deliverables | Interactive + static web map (QGIS- or ESRI-based) |
-42  | Operational use | Facilities/Sustainability staff trained and using GIS tools |
+| Operational use | Facilities/Sustainability staff trained and using GIS tools |
 | Educational impact | Used in ≥2 courses/research projects; public map online |
 | Sustainability impact | Tree data linked to carbon/green-asset tracking and reporting |
 

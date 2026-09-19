@@ -43,10 +43,12 @@ The schema follows best practices from:
 
   * Must be unique
   * Never reassigned or reused
+  * Must be stored/imported as *Text*, never Number -- both formats below use
+    leading zeros that a numeric type will silently strip; this may affect how the GIS reads and displays this.
 * **Format Examples:**
-
-  * `000123`
-  * `2022-045`
+  * `0001` -- tagged tree: 4-digit, zero-padded, sequential
+  * `UT-001` -- untagged tree ("UT" = Untagged): `UT-` prefix + 3-digit,
+    zero-padded, sequential
 * **Purpose:** Primary key for GIS joins and long-term tracking
 
 ---
