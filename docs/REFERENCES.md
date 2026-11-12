@@ -1,12 +1,10 @@
 # References & Prior Art
 
-**Purpose:** This document records the external standards, tools, and comparable projects that informed decisions made elsewhere in this repo -- so those decisions are grounded in outside precedent rather than invented from scratch, for the purpose of future reference and to communicate *why* a choice was made, not just what it was.
+**Purpose:** This document records the external standards, tools, and comparable projects that informed decisions made elsewhere in this repo, so those decisions are grounded in outside precedent, and for the purpose of future reference and to communicate *why* a workflow/protocol choice was made for this project.
 
-**How to use this file:** each entry states what it is, links to it, and names which
-decision(s) in this repo it actually informed. Except for *## General Relevant Data/Reference Sources* which is use for inspirational or informative references for the project.
- When a new source gets referenced in conversation or in a doc, add it here rather than re-describing it inline elsewhere -- link
-back to this file instead. Same consolidation logic used for `SCHEMA.md` /
-`data-dictionary.md`: one authoritative place, everything else points to it.
+**How to use this file:** each entry states what it is, provides links to the source material, and names which
+decision(s) in this repo it actually informed. 
+Except for *## General Relevant Data/Reference Sources* which is used for inspirational or informative references for the project. When a new source gets referenced in conversation or in a doc, add it here rather than re-describing it inline elsewhere -- link back to this file instead.
 
 ---
 
@@ -14,14 +12,14 @@ back to this file instead. Same consolidation logic used for `SCHEMA.md` /
 
 ### ISO 19115 (Geographic Information — Metadata)
 International standard for describing geospatial dataset metadata. Notably includes a
-formal "Lineage" element for documenting a dataset's sources and processing history — this
+formal "Lineage" element for documenting a dataset's sources and processing history -- this
 file is, in effect, a manual version of that same concept applied to the whole project.
 <https://mappingsystemsauthority.com/geospatial-data-standards/> (overview of how ISO 19115,
 FGDC CSDGM, and NSSDA relate to each other)
 **Informed:** the general documentation structure of this repo; referenced in
 `point_validation_SOP.md` §8.
 
-### FGDC CSDGM (Content Standard for Digital Geospatial Metadata, 1994)
+### FGDC CSDGM (Content Standard for Digital Geospatial Metadata, 1994) *## Double Check Relevance!*
 The U.S. federal geospatial metadata standard that predates ISO 19115 and remains active for
 legacy federal datasets.
 <https://mappingsystemsauthority.com/geospatial-data-standards/>
@@ -29,9 +27,13 @@ legacy federal datasets.
 
 ### NSSDA (National Standard for Spatial Data Accuracy, FGDC-STD-007.3-1998)
 Federal methodology for reporting positional accuracy as RMSE at a 95% confidence level,
-rather than a single bare accuracy number.
+rather than a single bare accuracy number. 
+
+*Note: This confidence level percentage may be revised (lowered) to meet the realistic compromisses set
+forth by the project's goals of accessibility and repeatability with the goal of staying mindful of consumer grade GNSS units that may realistically be used within the field data collection methodology*
+
 <https://www.fgdc.gov/standards/projects/accuracy/part3/index_html>
-**Informed:** `data-dictionary.md`'s "Resolved conflict #2" — separating the collection-time
+**Informed:** `data-dictionary.md`'s "Resolved conflict #2" -- separating the collection-time
 floor, dataset classification tiers, and project-level accuracy goal instead of treating
 them as one contradictory number; directly referenced in `point_validation_SOP.md` §8.
 
@@ -62,7 +64,7 @@ Professional urban forestry inventory provider (i-Tree team member) that runs fi
 GIS data through a formal QA/QC pass before treating it as authoritative.
 <https://www.davey.com/environmental-consulting-services/urban-community-forestry/tree-inventory-management/>
 **Informed:** the general shape of `point_validation_SOP.md` and
-`point_validation_toolkit.py` — a defined QA/QC pass between raw field collection and an
+`point_validation_toolkit.py` -- a defined QA/QC pass between raw field collection and an
 authoritative dataset, the same pattern DRG uses professionally.
 
 ---
@@ -73,17 +75,17 @@ authoritative dataset, the same pattern DRG uses professionally.
 A public, interactive GIS tree map maintained by Facilities Planning & Management, replacing
 an older Excel + AutoCAD workflow.
 <https://www.fpm.iastate.edu/planning_services/tree_inventory/>
-**Informed:** this project's public web map + Facilities-operational access tier split
-(`PROJECT_STATUS.md`, "Access tiers" section) — ISU runs a near-identical structure at a
+**Informed:** this project's public web map ambitions & Facilities-operational access tier split
+(`PROJECT_STATUS.md`, "Access tiers" section) -- ISU runs a near-identical structure at a
 comparable institutional scale.
 
-### University of Iowa — ICIGO student GIS program
+### University of Iowa — ICIGO student GIS program         *## Make Story map like this*
 A student organization within UI's School of Earth, Environment & Sustainability that
 conducts on-site tree studies and builds GIS-based digital tree inventory tools for partner
 municipalities.
 <https://iisc.uiowa.edu/colleges-and-departments/earth-environment-sustainability>
 **Informed:** the volunteer/student-crew field collection model used in
-`field_data_collection_protocol.md` — a comparable student-driven data collection structure
+`field_data_collection_protocol.md` -- a comparable student-driven data collection structure
 at another Iowa institution.
 
 ---
@@ -95,10 +97,11 @@ Moved from PDA-based manual field collection (error-prone, manually merged back 
 office) to real-time, mobile ArcGIS-based field collection.
 <https://www.esri.com/about/newsroom/arcwatch/protecting-urban-forests-the-modern-way>
 **Informed:** the rationale in `gps_best_practices_cheat_sheet.md` for routing some points to
-the Garmin GPSMAP 65s workflow rather than relying on smartphone GNSS alone — the same
-"upgrade field hardware specifically where accuracy actually breaks down" logic.
+the Garmin GPSMAP 65s workflow rather than relying on smartphone GNSS alone -- the same
+"upgrade field hardware specifically where accuracy actually breaks down" logic that we went with for 
+this project.
 
-### City of Austin — GIS Tree Inventory (via Halff Associates)
+### City of Austin — GIS Tree Inventory (via Halff Associates) *## FIND BETTER WAY TO STORE PHOTOS*
 A schema-driven ArcGIS Enterprise tree inventory (~22,300 trees) requiring a minimum of one
 leaf/bark photo and one tree-form photo per record, tracked via ArcGIS Field Maps and
 Dashboards.

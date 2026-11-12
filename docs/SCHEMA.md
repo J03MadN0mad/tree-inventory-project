@@ -7,20 +7,22 @@
 ## **Document Status**
 
 * **Version:** 2 — Updated 2026-07-20
-* This is the **single authoritative schema reference** for this project's mastersheet. `Field_Guide_Reference.md` has been formally retired as of this version — it remains in the repo only as a deprecated historical record and should not be treated as a live source. See that file's deprecation notice for the full list of what it got wrong.
-* **Change from v1:** Added `Duplicate_Candidate` to the `Status` domain below — an automated-QA-only flag (never field-confirmed, never auto-deletes) that `point_validation_toolkit.py` was already setting in practice. This formalizes what was previously only a recommendation in `data-dictionary.md`.
+* This is the **single authoritative schema reference** for this project's master datasheet. Basically, the attribute data per each tree that we are interested in collecting. It also servers as a reference to the master data sheet. 
+`Field_Guide_Reference.md` has been formally retired as of this version and it remains in the repo only as a deprecated historical record and should not be treated as a live source. See that file's deprecation notice the reasonaing.
+* **Change from v1:** Added `Duplicate_Candidate` to the `Status` domain below -- an automated-QA-only flag (never field-confirmed, never auto-deletes) that `point_validation_toolkit.py` was already setting in practice. This formalizes what was previously only a recommendation in `data-dictionary.md`.
 
 ---
 
 ## **Overview**
 
-This document defines the authoritative schema for the campus tree inventory GIS database.
+This document defines the authoritative schema for this project's campus tree inventory GIS database.
 It is designed to support:
 
 * Field data collection (Arboreal / mobile GIS)
-* Spatial analysis (ArcGIS Pro / QGIS)
-* Web mapping (ArcGIS Online)
-* Long-term asset management and climate reporting
+* Data management (excel master data sheet for all recorded trees)
+* Spatial analysis (ArcGIS Pro) *## Removed QGIS as that objected will not to fulfilled this cohort.*
+* Web mapping (ArcGIS Online) *## Maybe if time allows Novemeber*
+* Long-term tree asset management and climate reporting 
 
 The schema follows best practices from:
 
@@ -46,10 +48,11 @@ The schema follows best practices from:
   * Must be stored/imported as *Text*, never Number -- both formats below use
     leading zeros that a numeric type will silently strip; this may affect how the GIS reads and displays this.
 * **Format Examples:**
-  * `0001` -- tagged tree: 4-digit, zero-padded, sequential
+  * `0001` -- tagged tree: 4-digit, zero-padded, sequential *## Double check this via the master sheet 
   * `UT-001` -- untagged tree ("UT" = Untagged): `UT-` prefix + 3-digit,
     zero-padded, sequential
-* **Purpose:** Primary key for GIS joins and long-term tracking
+* **Purpose:** Primary key for GIS joins and long-term tracking 
+*See `arcgis_pro_workflow.md` for explanation and practice of GIS join* *## Validate this later*
 
 ---
 
@@ -132,7 +135,7 @@ The schema follows best practices from:
 
 * **Type:** Float
 * **Units:** Meters
-* **Description:** Average canopy width.
+* **Description:** Average canopy width. *## Confirm if truely average or just 1 measurement of one tree*
 
 ---
 
@@ -161,7 +164,7 @@ The schema follows best practices from:
 
 ---
 
-### **Status**
+### **Status**  *## Sweep Mastersheet for this*
 
 * **Type:** Text (Domain Controlled)
 * **Required:** Yes
@@ -175,7 +178,7 @@ The schema follows best practices from:
 
 * **Needs_Verification**
 
-  * Default for legacy data not yet field-checked
+  * Default for legacy data not yet field-checked *## Run ALL pre-2025 for this this weekend?*
 
 * **Missing_Tag**
 
@@ -183,17 +186,20 @@ The schema follows best practices from:
 
 * **New_2025**
 
-  * Newly added tree (post-2022 dataset)
+  * Newly added tree (post-2022 dataset) *##confirm all these for 2025+ have this*
 
 * **Uncertain_Location**
 
-  * GPS error >3–5m or unclear placement
+  * GPS error >3–5m or unclear placement *## mindful of this during sweep*
 
 * **Duplicate_Candidate**
 
   * Automated QA flagged this record as sharing a near-identical location, and/or a duplicate `Tag_ID`, with another record.
-  * Set only by desk-based validation (`point_validation_toolkit.py`) — never a field-confirmed state.
-  * Requires human review before any deletion. Never auto-removed.
+  * Set only by desk-based validation (`point_validation_toolkit.py`) -- never a field-confirmed state.
+  * *CRITICAL*: Requires human review before any deletion. Never auto-removed.
+  * As a reminder: it is generally good practice to never delete data that is collected. Even when the data is 
+  incorrected (storing bad data ≠ using bad data), it's best to keep it store somewhere within your private
+  Drive or chose form of project data storage.
 
 * **Removed**
 
@@ -236,7 +242,7 @@ The schema follows best practices from:
 * **Use:**
 
   * ≤3m → Verified
-  * 3–5m → Conditional
+  * 3–5m → Conditional  *## Needs verification via remote validation?*
   * > 5m → Needs correction
 
 ---
@@ -273,6 +279,8 @@ The schema follows best practices from:
 * **Type:** Text
 * **Description:** Person or team collecting data
 
+#### Due to privacy concerns, the decision to collect this data is purely at the descretion of the project team. 
+
 ---
 
 ## **Media & Notes**
@@ -293,9 +301,10 @@ The schema follows best practices from:
 
 # **Coordinate System Standard**
 
-* **Primary Storage:** WGS 84 (EPSG:4326)
+* **Primary Storage:** WGS 84 (EPSG:4326) 
+This is genrally the default for collected data from Arboreal and GPS units. 
 * **Working Projection:** UTM Zone 11N (WGS 84)
-* **Rule:** All spatial data must align with project CRS before analysis
+* **Rule:** All spatial data must align with project CRS before analysis *## Mention what CRS stands for* 
 
 ---
 
@@ -307,7 +316,7 @@ The schema follows best practices from:
 
   * File Geodatabase (ArcGIS)
   * GeoPackage (QGIS backup)
-* Edits must occur in GIS environment, not raw CSV
+* Edits must occur in GIS environment, not raw CSV *## Get clarity on this*
 
 ---
 
@@ -317,7 +326,7 @@ The schema follows best practices from:
 
   * Preserve previous records
   * Log changes to Status field
-  * Record verification date (future field recommended)
+  * Record verification date (future field recommended) *## Incorporate this into official mastersheet*
 
 ---
 
@@ -328,6 +337,6 @@ This schema ensures:
 * Data consistency across platforms
 * Defensible spatial accuracy
 * Scalable field workflows
-* Long-term usability for campus operations and climate analysis
+* Long-term usability for campus operations, climate action planning, and climate analysis
 
 ---

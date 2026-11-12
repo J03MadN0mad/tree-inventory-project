@@ -89,6 +89,12 @@ Formula: `NDVI = (NIR − Red) / (NIR + Red)`
 
 This produces a per-pixel value from −1 to 1, where higher values indicate denser, healthier vegetation -- the basis for the color ramp in Step 3.
 
+*(Note: NDVI (vegetation index) analysis is a supplementary technique for visualizing tree
+canopy -- not tied to a specific objective listed within `overview.md`, and not a required deliverable
+of any one of them. 
+Each project is free to incorporate this workflow as it
+sees fit.)*
+
 **Step 3 — Raster processing**
 
 - Clip the raster to the campus boundary (working from a smaller extent avoids processing imagery for areas the project has no use for)
